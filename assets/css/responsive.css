@@ -1,0 +1,238 @@
+/* =========================================================
+   RESPONSIVE GENERAL - PROYECTO LEVI'S
+   Adaptación para computadora, tablet y celular
+   ========================================================= */
+
+
+/* =========================================================
+   REGLAS GENERALES
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* =========================================================
+   COMPUTADORA
+   1025px EN ADELANTE
+   ========================================================= */
+
+@media (min-width: 1025px) {
+
+    .container,
+    .contenedor {
+        width: 90%;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   768px - 1024px
+   ========================================================= */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .container,
+    .contenedor {
+        width: 92%;
+        margin: 0 auto;
+    }
+
+    /* Productos */
+    .productos,
+    .product-grid,
+    .galeria-productos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    /* Imágenes */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Títulos */
+    h1 {
+        font-size: 36px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    h3 {
+        font-size: 24px;
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR
+   Hasta 767px
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    /* Contenedores */
+    .container,
+    .contenedor {
+        width: 94%;
+        margin: 0 auto;
+    }
+
+    /* Evita que elementos grandes provoquen
+       desplazamiento horizontal */
+    section,
+    main,
+    header,
+    footer {
+        max-width: 100%;
+    }
+
+
+    /* =====================================================
+       PRODUCTOS
+       ===================================================== */
+
+    .productos,
+    .product-grid,
+    .galeria-productos {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
+        width: 100%;
+    }
+
+
+    /* =====================================================
+       IMÁGENES
+       ===================================================== */
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+
+    /* =====================================================
+       TEXTOS
+       ===================================================== */
+
+    h1 {
+        font-size: 28px;
+        line-height: 1.2;
+    }
+
+    h2 {
+        font-size: 24px;
+        line-height: 1.25;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+
+    /* =====================================================
+       BOTONES
+       ===================================================== */
+
+    button,
+    .btn,
+    .boton {
+        max-width: 100%;
+    }
+
+
+    /* =====================================================
+       FORMULARIOS
+       ===================================================== */
+
+    input,
+    select,
+    textarea {
+        max-width: 100%;
+    }
+
+
+    /* =====================================================
+       TABLAS
+       ===================================================== */
+
+    table {
+        max-width: 100%;
+    }
+
+
+    /* =====================================================
+       ELEMENTOS CON WIDTH FIJO
+       ===================================================== */
+
+    .banner,
+    .hero,
+    .contenido,
+    .seccion {
+        max-width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   CELULARES PEQUEÑOS
+   Hasta 480px
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: 25px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    h3 {
+        font-size: 19px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .container,
+    .contenedor {
+        width: 92%;
+    }
+
+}
