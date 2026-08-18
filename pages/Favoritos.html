@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Favoritos | Levi's®</title>
+
+    <link rel="stylesheet" href="../assets/css/stylesBeyonce.css">
+
+    <style>
+
+        /* =====================================================
+           AJUSTES GENERALES DE ESTA PÁGINA
+        ===================================================== */
+
+        body {
+            background: #f8f8f8;
+        }
+
+        /* =====================================================
+           CONTENIDO DE FAVORITOS
+        ===================================================== */
+
+        .favorites-page {
+            width: 92%;
+            max-width: 1450px;
+            margin: 0 auto;
+            padding: 65px 0 100px;
+        }
+
+        .favorites-header {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .favorites-header span {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #e31837;
+            margin-bottom: 12px;
+        }
+
+        .favorites-header h1 {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .favorites-header p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           CONTADOR
+        ===================================================== */
+
+        .favorites-count {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .favorites-count p {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           GRID DE PRODUCTOS
+        ===================================================== */
+
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+
+        /* =====================================================
+           TARJETA
+        ===================================================== */
+
+        .favorite-card {
+            background: #ffffff;
+            position: relative;
+            overflow: hidden;
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        .favorite-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .10);
+        }
+
+
+        /* =====================================================
+           IMAGEN
+        ===================================================== */
+
+        .favorite-image {
+            display: block;
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            overflow: hidden;
+            background: #eeeeee;
+            position: relative;
+        }
+
+        .favorite-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .5s ease;
+        }
+
+        .favorite-card:hover .favorite-image img {
+            transform: scale(1.04);
+        }
+
+
+        /* =====================================================
+           CORAZÓN
+        ===================================================== */
+
+        .remove-favorite {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 34px;
+            height: 34px;
+            border: none;
+            border-radius: 50%;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 5;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, .12);
+            transition: .25s ease;
+        }
+
+        .remove-favorite:hover {
+            transform: scale(1.08);
+            background: #111;
+        }
+
+        .remove-favorite img {
+            width: 17px;
+            height: 17px;
+            object-fit: contain;
+        }
+
+
+        /* =====================================================
+           INFORMACIÓN
+        ===================================================== */
+
+        .favorite-info {
+            padding: 18px 16px 22px;
+        }
+
+        .favorite-category {
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: #888;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .favorite-name {
+            font-size: 13px;
+            line-height: 1.45;
+            min-height: 38px;
+            margin-bottom: 10px;
+            color: #111;
+        }
+
+        .favorite-price {
+            font-size: 13px;
+            font-weight: 700;
+            color: #111;
+        }
+
+
+        /* =====================================================
+           BOTÓN
+        ===================================================== */
+
+        .favorite-button {
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+            padding: 12px 10px;
+            background: #111;
+            color: #fff;
+            text-align: center;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: .25s ease;
+        }
+
+        .favorite-button:hover {
+            background: #e31837;
+        }
+
+
+        /* =====================================================
+           MENSAJE INFERIOR
+        ===================================================== */
+
+        .favorites-footer-message {
+            margin-top: 70px;
+            padding: 55px 25px;
+            background: #eeeeee;
+            text-align: center;
+        }
+
+        .favorites-footer-message h2 {
+            font-size: 28px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .favorites-footer-message p {
+            color: #666;
+            font-size: 13px;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            .favorites-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            .favorites-page {
+                width: 90%;
+                padding-top: 45px;
+            }
+
+            .favorites-header h1 {
+                font-size: 34px;
+            }
+
+            .favorites-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .favorites-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .favorites-header h1 {
+                font-size: 29px;
+            }
+
+            .favorites-count {
+                justify-content: center;
+            }
+
+            .favorite-image {
+                aspect-ratio: 1 / 1.15;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+    <!-- =================================================
+         BARRA SUPERIOR
+    ================================================== -->
+
+    <div class="top-bar">
+
+        <a href="../paginaweb.html">
+
+            <img
+                src="../assets/img/levlogo.png"
+                alt="Logo Levi's"
+                class="logo"
+            >
+
+        </a>
+
+
+        <div class="auth-buttons">
+
+            <button
+                class="rounded-button"
+                onclick="location.href='inicio.html';"
+            >
+                INICIAR SESIÓN
+            </button>
+
+
+            <button
+                class="rounded-button"
+                onclick="location.href='registrarse.html';"
+            >
+                REGISTRARSE
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         NAVBAR
+    ================================================== -->
+
+    <nav class="navbar">
+
+        <ul class="categories">
+
+
+            <!-- =========================
+                 NEW ARRIVALS
+            ========================== -->
+
+            <li class="dropdown">
+
+                <a href="#">NEW ARRIVALS</a>
+
+                <div class="dropdown-menu">
+
+                    <div class="column">
+
+                        <h3>DESTACADO</h3>
+
+                        <a href="Reinterpretado%20por%20Beyonce.html">
+                            REINTERPRETADO POR BEYONCÉ
+                        </a>
+
+                        <a href="lomasvendido.html">
+                            LO MÁS VENDIDO
+                        </a>
+
+                        <a href="otoño.html">
+                            COLECCIÓN OTOÑO-INVIERNO
+                        </a>
+
+                    </div>
+
+
+                    <div class="column">
+
+                        <h3>NOVEDADES PARA HOMBRE</h3>
+
+                        <a href="hombre.html">ROPA</a>
+                        <a href="hombre.html">ACCESORIOS</a>
+                        <a href="hombre.html">
+                            SUDADERAS Y CHAMARRAS
+                        </a>
+
+                    </div>
+
+
+                    <div class="column">
+
+                        <h3>NOVEDADES PARA MUJER</h3>
+
+                        <a href="mujer.html">ROPA</a>
+                        <a href="mujer.html">ACCESORIOS</a>
+                        <a href="mujer.html">
+                            SUDADERAS Y CHAMARRAS
+                        </a>
+
+                    </div>
+
+
+                    <div class="column">
+
+                        <h3>NOVEDADES PARA KIDS</h3>
+
+                        <a href="kids.html">
+                            ROPA PARA NIÑOS
+                        </a>
+
+                        <a href="kids.html">
+                            SUDADERAS Y CHAMARRAS PARA NIÑOS
+                        </a>
+
+                        <a href="kids.html">
+                            ROPA PARA NIÑAS
+                        </a>
+
+                        <a href="kids.html">
+                            SUDADERAS Y CHAMARRAS PARA NIÑAS
+                        </a>
+
+                    </div>
+
+
+                    <div class="column">
+
+                        <h3>ACCESORIOS</h3>
+
+                        <a href="accesorios.html">CINTURONES</a>
+
+                        <a href="accesorios.html">CARTERAS</a>
+
+                        <a href="accesorios.html">
+                            UNDERWEAR & SOCKS
+                        </a>
+
+                        <a href="accesorios.html">HEADWEAR</a>
+
+                        <a href="accesorios.html">
+                            GORRAS & GORROS
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </li>
+
+
+
+            <!-- =========================
+                 HOMBRE
+            ========================== -->
+
+            <li class="dropdown">
+
+                <a href="#">HOMBRE</a>
+
+                <div class="dropdown-menu">
+
+                    <div class="column">
+
+                        <h3>DESTACADO</h3>
+
+                        <a href="lomasvendido.html">
+                            LO MÁS NUEVO
+                        </a>
+
+                        <a href="lomasvendido.html">
+                            LO MÁS VENDIDO
+                        </a>
+
+                        <a href="otoño.html">
+                            COLECCIÓN OTOÑO-INVIERNO
+                        </a>
+
+                    </div>
+
+
+                    <div class="column">
+
+                        <h3>ROPA</h3>
+
+                        <a href="hombre.html">VER TODO</a>
+                        <a href="hombre.html">JEANS</a>
+
+                        <a href="hombre.html">
+                            PANTALONES & SHORTS
+                        </a>
+
+                        <a href="hombre.html">
+                            CAMISAS Y PLAYERAS
+                        </a>
+
+                        <a href="hombre.html">POLOS</a>
+                        <a href="hombre.html">BIG & TALL</a>
+
+                    </div>
+
+
+                    <div class="column">
+
+                        <h3>SUDADERAS Y CHAMARRAS</h3>
+
+                        <a href="hombre.html">OUTERWEAR</a>
+                        <a href="hombre.html">SWEATERS</a>
+                        <a href="hombre.html">SUDADERAS</a>
+                        <a href="hombre.html">CHAMARRAS</a>
+
+                    </div>
+
+
+                    <div class="column">
+
+                        <h3>ACCESORIOS</h3>
+
+                        <a href="accesorios.html">CINTURONES</a>
+                        <a href="accesorios.html">CARTERAS</a>
+
+                        <a href="accesorios.html">
+                            UNDERWEAR & SOCKS
+                        </a>
+
+                        <a href="accesorios.html">HEADWEAR</a>
+
+                        <a href="accesorios.html">
+                            GORRAS & GORROS
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </li>
+
+
+
+            <!-- =========================
+                 MUJER
+            ========================== -->
+
+            <li class="dropdown">
+
+                <a href="#">MUJER</a>
+
+                <div class="dropdown-menu">
+
+                    <div class="column">
+
+                        <h3>DESTACADO</h3>
+
+                        <a href="lomasvendido.html">
+                            LO MÁS NUEVO
+                        </a>
+
+                        <a href="lomasvendido.html">
+                            LO MÁS VENDIDO
+                        </a>
+
+                        <a href="otoño.html">
+                            COLECCIÓN OTOÑO-INVIERNO
+                        </a>
+
+                    </div>
+
+
+                    <div class="column">
+
+                        <h3>ROPA</h3>
+
+                        <a href="mujer.html">VER TODO</a>
+                        <a href="mujer.html">JEANS</a>
+                        <a href="mujer.html">PANTALONES</a>
+
+                        <a href="mujer.html">
+                            SHORTS & FALDAS
+                        </a>
+
+                        <a href="mujer.html">
+                            VESTIDOS & ONE PIECE
+                        </a>
+
+                        <a href="mujer.html">
+                            BIG & TALL
+                        </a>
+
+                    </div>
+
+
+                    <div class="column">
+
+                        <h3>SUDADERAS Y CHAMARRAS</h3>
+
+                        <a href="mujer.html">OUTERWEAR</a>
+                        <a href="mujer.html">SWEATERS</a>
+                        <a href="mujer.html">SUDADERAS</a>
+                        <a href="mujer.html">CHAMARRAS</a>
+
+                    </div>
+
+
+                    <div class="column">
+
+                        <h3>ACCESORIOS</h3>
+
+                        <a href="accesorios.html">CINTURONES</a>
+                        <a href="accesorios.html">CARTERAS</a>
+
+                        <a href="accesorios.html">
+                            UNDERWEAR & SOCKS
+                        </a>
+
+                        <a href="accesorios.html">HEADWEAR</a>
+
+                        <a href="accesorios.html">
+                            GORRAS & GORROS
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </li>
+
+
+
+            <!-- =========================
+                 KIDS
+            ========================== -->
+
+            <li class="dropdown">
+
+                <a href="#">KIDS</a>
+
+                <div class="dropdown-menu">
+
+                    <div class="column">
+
+                        <h3>DESTACADO</h3>
+
+                        <a href="kids.html">
+                            LO MÁS NUEVO
+                        </a>
+
+                        <a href="kids.html">
+                            LO MÁS VENDIDO
+                        </a>
+
+                        <a href="otoño.html">
+                            COLECCIÓN OTOÑO-INVIERNO
+                        </a>
+
+                    </div>
+
+
+                    <div class="column">
+
+                        <h3>ROPA</h3>
+
+                        <a href="kids.html">VER TODO</a>
+
+                        <a href="kids.html">
+                            BEBÉS E INFANTIL
+                        </a>
+
+                        <a href="kids.html">
+                            PREESCOLAR
+                        </a>
+
+                        <a href="kids.html">
+                            NIÑOS/AS
+                        </a>
+
+                        <a href="kids.html">
+                            PLAYERAS
+                        </a>
+
+                        <a href="kids.html">
+                            BIG & TALL
+                        </a>
+
+                    </div>
+
+
+                    <div class="column">
+
+                        <h3>SUDADERAS Y CHAMARRAS</h3>
+
+                        <a href="kids.html">OUTERWEAR</a>
+                        <a href="kids.html">SWEATERS</a>
+                        <a href="kids.html">SUDADERAS</a>
+                        <a href="kids.html">CHAMARRAS</a>
+
+                    </div>
+
+
+                    <div class="column">
+
+                        <h3>ACCESORIOS</h3>
+
+                        <a href="accesorios.html">
+                            CINTURONES
+                        </a>
+
+                        <a href="accesorios.html">
+                            UNDERWEAR & SOCKS
+                        </a>
+
+                        <a href="accesorios.html">
+                            HEADWEAR
+                        </a>
+
+                        <a href="accesorios.html">
+                            GORRAS & GORROS
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </li>
+
+
+
+            <!-- =========================
+                 REBAJAS
+            ========================== -->
+
+            <li class="dropdown">
+
+                <a href="#">REBAJAS</a>
+
+                <div class="dropdown-menu">
+
+                    <div class="column">
+
+                        <h3>TODAS LAS OFERTAS</h3>
+
+                        <a href="rebajas.html">
+                            OFERTAS DE ROPA
+                        </a>
+
+                        <a href="rebajas.html">
+                            OFERTAS DE ACCESORIOS
+                        </a>
+
+                    </div>
+
+
+                    <div class="column">
+
+                        <h3>HOMBRE</h3>
+
+                        <a href="rebajas.html">
+                            VER TODO
+                        </a>
+
+                        <a href="rebajas.html">
+                            PLAYERAS
+                        </a>
+
+                        <a href="rebajas.html">
+                            SUDADERAS
+                        </a>
+
+                    </div>
+
+
+                    <div class="column">
+
+                        <h3>OFERTAS POR TIEMPO LIMITADO</h3>
+
+                        <a href="rebajas.html">
+                            ÚLTIMA OPORTUNIDAD HASTA 40% OFF
+                        </a>
+
+                        <a href="rebajas.html">
+                            OFERTAS DE NUEVOS ESTILOS
+                        </a>
+
+                    </div>
+
+
+                    <div class="column">
+
+                        <h3>ACCESORIOS</h3>
+
+                        <a href="rebajas.html">
+                            CINTURONES
+                        </a>
+
+                        <a href="rebajas.html">
+                            GORRAS & GORROS
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </li>
+
+        </ul>
+
+
+
+        <!-- =================================================
+             BÚSQUEDA E ICONOS
+        ================================================== -->
+
+        <div class="navbar-icons">
+
+            <input
+                type="text"
+                placeholder="Buscar..."
+                class="search-bar"
+            >
+
+
+            <img
+                src="../assets/img/cora1.png"
+                alt="Favoritos"
+                onclick="location.href='Favoritos.html';"
+                style="cursor:pointer;"
+            >
+
+
+            <img
+                src="../assets/img/bolsa.png"
+                alt="Carrito"
+                onclick="location.href='Carrito.html';"
+                style="cursor:pointer;"
+            >
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     CONTENIDO PRINCIPAL
+===================================================== -->
+
+<main>
+
+    <section class="favorites-page">
+
+
+        <!-- =================================================
+             ENCABEZADO
+        ================================================== -->
+
+        <div class="favorites-header">
+
+            <span>
+                TU SELECCIÓN
+            </span>
+
+            <h1>
+                MIS FAVORITOS
+            </h1>
+
+            <p>
+                Guarda tus estilos favoritos de Levi’s® y
+                tenlos siempre a la mano para cuando estés
+                listo para hacerlos tuyos.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CONTADOR
+        ================================================== -->
+
+        <div class="favorites-count">
+
+            <p>
+                8 productos guardados
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             PRODUCTOS
+        ================================================== -->
+
+        <div class="favorites-grid">
+
+
+            <!-- PRODUCTO 1 -->
+
+            <article class="favorite-card">
+
+                <button
+                    class="remove-favorite"
+                    title="Eliminar de favoritos"
+                >
+
+                    <img
+                        src="../assets/img/cora1.png"
+                        alt="Eliminar favorito"
+                    >
+
+                </button>
+
+
+                <a
+                    href="producto.html"
+                    class="favorite-image"
+                >
+
+                    <img
+                        src="../assets/img/b2.png"
+                        alt="Falda Mermaid Levi’s®"
+                    >
+
+                </a>
+
+
+                <div class="favorite-info">
+
+                    <p class="favorite-category">
+                        MUJER
+                    </p>
+
+                    <p class="favorite-name">
+                        Falda Mermaid Levi’s®
+                    </p>
+
+                    <p class="favorite-price">
+                        $1,299.00
+                    </p>
+
+                    <a
+                        href="producto.html"
+                        class="favorite-button"
+                    >
+                        VER PRODUCTO
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PRODUCTO 2 -->
+
+            <article class="favorite-card">
+
+                <button
+                    class="remove-favorite"
+                    title="Eliminar de favoritos"
+                >
+
+                    <img
+                        src="../assets/img/cora1.png"
+                        alt="Eliminar favorito"
+                    >
+
+                </button>
+
+
+                <a
+                    href="producto.html"
+                    class="favorite-image"
+                >
+
+                    <img
+                        src="../assets/img/b3.png"
+                        alt="Playera Perfect Levi’s®"
+                    >
+
+                </a>
+
+
+                <div class="favorite-info">
+
+                    <p class="favorite-category">
+                        MUJER
+                    </p>
+
+                    <p class="favorite-name">
+                        Playera Perfect Levi’s®
+                    </p>
+
+                    <p class="favorite-price">
+                        $599.00
+                    </p>
+
+                    <a
+                        href="producto.html"
+                        class="favorite-button"
+                    >
+                        VER PRODUCTO
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PRODUCTO 3 -->
+
+            <article class="favorite-card">
+
+                <button
+                    class="remove-favorite"
+                    title="Eliminar de favoritos"
+                >
+
+                    <img
+                        src="../assets/img/cora1.png"
+                        alt="Eliminar favorito"
+                    >
+
+                </button>
+
+
+                <a
+                    href="producto.html"
+                    class="favorite-image"
+                >
+
+                    <img
+                        src="../assets/img/b4.png"
+                        alt="Blusa Mona Denim Corset Levi’s®"
+                    >
+
+                </a>
+
+
+                <div class="favorite-info">
+
+                    <p class="favorite-category">
+                        MUJER
+                    </p>
+
+                    <p class="favorite-name">
+                        Blusa Mona Denim Corset Levi’s®
+                    </p>
+
+                    <p class="favorite-price">
+                        $1,399.00
+                    </p>
+
+                    <a
+                        href="producto.html"
+                        class="favorite-button"
+                    >
+                        VER PRODUCTO
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PRODUCTO 4 -->
+
+            <article class="favorite-card">
+
+                <button
+                    class="remove-favorite"
+                    title="Eliminar de favoritos"
+                >
+
+                    <img
+                        src="../assets/img/cora1.png"
+                        alt="Eliminar favorito"
+                    >
+
+                </button>
+
+
+                <a
+                    href="producto.html"
+                    class="favorite-image"
+                >
+
+                    <img
+                        src="../assets/img/sudh.png"
+                        alt="Sudadera Levi’s®"
+                    >
+
+                </a>
+
+
+                <div class="favorite-info">
+
+                    <p class="favorite-category">
+                        MUJER
+                    </p>
+
+                    <p class="favorite-name">
+                        Sudadera Levi’s®
+                    </p>
+
+                    <p class="favorite-price">
+                        $1,399.00
+                    </p>
+
+                    <a
+                        href="producto.html"
+                        class="favorite-button"
+                    >
+                        VER PRODUCTO
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PRODUCTO 5 -->
+
+            <article class="favorite-card">
+
+                <button
+                    class="remove-favorite"
+                    title="Eliminar de favoritos"
+                >
+
+                    <img
+                        src="../assets/img/cora1.png"
+                        alt="Eliminar favorito"
+                    >
+
+                </button>
+
+
+                <a
+                    href="producto.html"
+                    class="favorite-image"
+                >
+
+                    <img
+                        src="../assets/img/cam.png"
+                        alt="Camisa Levi’s®"
+                    >
+
+                </a>
+
+
+                <div class="favorite-info">
+
+                    <p class="favorite-category">
+                        MUJER
+                    </p>
+
+                    <p class="favorite-name">
+                        Camisa Levi’s®
+                    </p>
+
+                    <p class="favorite-price">
+                        $1,299.00
+                    </p>
+
+                    <a
+                        href="producto.html"
+                        class="favorite-button"
+                    >
+                        VER PRODUCTO
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PRODUCTO 6 -->
+
+            <article class="favorite-card">
+
+                <button
+                    class="remove-favorite"
+                    title="Eliminar de favoritos"
+                >
+
+                    <img
+                        src="../assets/img/cora1.png"
+                        alt="Eliminar favorito"
+                    >
+
+                </button>
+
+
+                <a
+                    href="producto.html"
+                    class="favorite-image"
+                >
+
+                    <img
+                        src="../assets/img/lar.png"
+                        alt="Playera Levi’s®"
+                    >
+
+                </a>
+
+
+                <div class="favorite-info">
+
+                    <p class="favorite-category">
+                        MUJER
+                    </p>
+
+                    <p class="favorite-name">
+                        Playera Perfect Levi’s®
+                    </p>
+
+                    <p class="favorite-price">
+                        $599.00
+                    </p>
+
+                    <a
+                        href="producto.html"
+                        class="favorite-button"
+                    >
+                        VER PRODUCTO
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PRODUCTO 7 -->
+
+            <article class="favorite-card">
+
+                <button
+                    class="remove-favorite"
+                    title="Eliminar de favoritos"
+                >
+
+                    <img
+                        src="../assets/img/cora1.png"
+                        alt="Eliminar favorito"
+                    >
+
+                </button>
+
+
+                <a
+                    href="producto.html"
+                    class="favorite-image"
+                >
+
+                    <img
+                        src="../assets/img/b1.png"
+                        alt="Blusa Mona Denim Corset Levi’s®"
+                    >
+
+                </a>
+
+
+                <div class="favorite-info">
+
+                    <p class="favorite-category">
+                        MUJER
+                    </p>
+
+                    <p class="favorite-name">
+                        Blusa Mona Denim Corset Levi’s®
+                    </p>
+
+                    <p class="favorite-price">
+                        $1,399.00
+                    </p>
+
+                    <a
+                        href="producto.html"
+                        class="favorite-button"
+                    >
+                        VER PRODUCTO
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PRODUCTO 8 -->
+
+            <article class="favorite-card">
+
+                <button
+                    class="remove-favorite"
+                    title="Eliminar de favoritos"
+                >
+
+                    <img
+                        src="../assets/img/cora1.png"
+                        alt="Eliminar favorito"
+                    >
+
+                </button>
+
+
+                <a
+                    href="producto.html"
+                    class="favorite-image"
+                >
+
+                    <img
+                        src="../assets/img/pro1.png"
+                        alt="Producto Levi’s®"
+                    >
+
+                </a>
+
+
+                <div class="favorite-info">
+
+                    <p class="favorite-category">
+                        MUJER
+                    </p>
+
+                    <p class="favorite-name">
+                        Blusa Mona Denim Corset Levi’s®
+                    </p>
+
+                    <p class="favorite-price">
+                        $1,399.00
+                    </p>
+
+                    <a
+                        href="producto.html"
+                        class="favorite-button"
+                    >
+                        VER PRODUCTO
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+
+        <!-- =================================================
+             MENSAJE FINAL
+        ================================================== -->
+
+        <div class="favorites-footer-message">
+
+            <h2>
+                SIGUE DESCUBRIENDO
+            </h2>
+
+            <p>
+                Encuentra nuevos estilos, clásicos Levi’s®
+                y las últimas novedades de la temporada.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <p>
+        &copy; 2026 Levi's®. Todos los derechos reservados.
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

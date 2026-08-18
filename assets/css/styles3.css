@@ -1,0 +1,61 @@
+/* Fondo de toda la página */
+body {
+    background-color: #f0f8ff; /* Color de fondo claro */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Fondo del recuadro blanco */
+.container {
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 40px; /* Espaciado interno */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin: 100px auto; /* Centrado vertical y horizontal */
+    max-width: 500px; /* Anchura máxima del contenedor */
+    text-align: center; /* Texto centrado */
+}
+
+/* Título */
+h1 {
+    font-size: 28px;
+    color: #333; /* Color del texto */
+    margin-bottom: 30px;
+}
+
+/* Campos de entrada */
+input {
+    width: calc(100% - 30px); /* Tamaño relativo al contenedor */
+    height: 30px; /* Altura del campo */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc; /* Borde gris */
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 15px; /* Texto más grande */
+}
+
+/* Botón */
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff; /* Azul Levi's */
+    border: none;
+    color: white; /* Texto blanco */
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el ratón */
+}
+
+/* Mensaje de error */
+.error {
+    color: red;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+

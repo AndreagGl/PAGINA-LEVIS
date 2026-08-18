@@ -1,0 +1,2757 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Carrito | Levi's</title>
+
+    <!-- =====================================================
+         FUENTES
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         CSS ORIGINAL
+    ====================================================== -->
+
+    <link rel="stylesheet" href="../assets/css/styles1.css">
+
+
+    <!-- =====================================================
+         ESTILOS EXCLUSIVOS DEL CARRITO
+    ====================================================== -->
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ====================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f7f7f7;
+            color: #171717;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+
+
+        /* =====================================================
+           CONTENEDOR PRINCIPAL
+        ====================================================== */
+
+        .cart-page {
+            width: 100%;
+            max-width: 1450px;
+            margin: 0 auto;
+            padding: 55px 45px 90px;
+        }
+
+
+        /* =====================================================
+           ENCABEZADO DEL CARRITO
+        ====================================================== */
+
+        .cart-header {
+            margin-bottom: 35px;
+        }
+
+
+        .cart-header h1 {
+            margin: 0 0 10px;
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+
+        .cart-header p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           AVISO ENVÍO GRATIS
+        ====================================================== */
+
+        .shipping-banner {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #e2e2e2;
+            padding: 17px 22px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+
+        .shipping-icon {
+            width: 38px;
+            height: 38px;
+            background: #111;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 17px;
+            flex-shrink: 0;
+        }
+
+
+        .shipping-text strong {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+
+        .shipping-text span {
+            color: #777;
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           LAYOUT DEL CARRITO
+        ====================================================== */
+
+        .cart-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 380px;
+            gap: 30px;
+            align-items: start;
+        }
+
+
+        /* =====================================================
+           PRODUCTOS
+        ====================================================== */
+
+        .products-section {
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+        }
+
+
+        .products-title {
+            padding: 23px 28px;
+            border-bottom: 1px solid #e5e5e5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .products-title h2 {
+            margin: 0;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: .3px;
+        }
+
+
+        .products-title span {
+            color: #777;
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           TARJETA DE PRODUCTO
+        ====================================================== */
+
+        .cart-product {
+            display: grid;
+            grid-template-columns: 180px minmax(0, 1fr) auto;
+            gap: 25px;
+            padding: 27px 28px;
+            border-bottom: 1px solid #e7e7e7;
+            transition: background .2s ease;
+        }
+
+
+        .cart-product:last-child {
+            border-bottom: none;
+        }
+
+
+        .cart-product:hover {
+            background: #fafafa;
+        }
+
+
+        /* =====================================================
+           IMAGEN
+        ====================================================== */
+
+        .product-image-wrapper {
+            width: 180px;
+            height: 210px;
+            background: #f1f1f1;
+            overflow: hidden;
+            position: relative;
+        }
+
+
+        .product-image-wrapper a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .35s ease;
+        }
+
+
+        .product-image-wrapper:hover .product-image {
+            transform: scale(1.04);
+        }
+
+
+        /* =====================================================
+           INFORMACIÓN DEL PRODUCTO
+        ====================================================== */
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            padding-top: 4px;
+        }
+
+
+        .product-brand {
+            font-size: 10px;
+            color: #777;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+
+        .product-name {
+            margin: 0 0 16px;
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+
+        .product-name a {
+            color: #171717;
+            text-decoration: none;
+        }
+
+
+        .product-name a:hover {
+            text-decoration: underline;
+        }
+
+
+        .product-details {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(120px, 1fr));
+            gap: 9px 25px;
+            margin-bottom: 20px;
+        }
+
+
+        .detail {
+            font-size: 12px;
+            color: #666;
+        }
+
+
+        .detail strong {
+            color: #222;
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           COLOR
+        ====================================================== */
+
+        .color-detail {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+
+        .color-circle {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 1px solid #bdbdbd;
+            display: inline-block;
+        }
+
+
+        /* =====================================================
+           CONTROLES
+        ====================================================== */
+
+        .product-actions {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            border: 1px solid #cfcfcf;
+            height: 40px;
+        }
+
+
+        .quantity-button {
+            width: 38px;
+            height: 38px;
+            border: none;
+            background: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background .2s ease;
+        }
+
+
+        .quantity-button:hover {
+            background: #eeeeee;
+        }
+
+
+        .quantity-value {
+            width: 38px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+
+        .remove-button {
+            border: none;
+            background: none;
+            padding: 0;
+            color: #666;
+            font-size: 11px;
+            text-decoration: underline;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+
+        .remove-button:hover {
+            color: #111;
+        }
+
+
+        /* =====================================================
+           PRECIO
+        ====================================================== */
+
+        .product-price {
+            min-width: 115px;
+            text-align: right;
+            padding-top: 4px;
+        }
+
+
+        .product-price .unit-price {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+
+        .product-price .price-label {
+            display: block;
+            margin-top: 5px;
+            font-size: 10px;
+            color: #777;
+        }
+
+
+        /* =====================================================
+           RESUMEN
+        ====================================================== */
+
+        .summary {
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            padding: 30px;
+            position: sticky;
+            top: 25px;
+        }
+
+
+        .summary h2 {
+            margin: 0 0 28px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            font-size: 13px;
+        }
+
+
+        .summary-row span:first-child {
+            color: #666;
+        }
+
+
+        .summary-row strong {
+            font-weight: 600;
+        }
+
+
+        .summary-divider {
+            height: 1px;
+            background: #dedede;
+            margin: 25px 0;
+        }
+
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+
+        .summary-total span {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+
+        .summary-total strong {
+            font-size: 23px;
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           CUPÓN
+        ====================================================== */
+
+        .coupon-title {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+
+        .coupon {
+            display: flex;
+            width: 100%;
+            margin-bottom: 25px;
+        }
+
+
+        .coupon input {
+            width: 100%;
+            height: 43px;
+            border: 1px solid #ccc;
+            border-right: none;
+            padding: 0 12px;
+            outline: none;
+            font-family: inherit;
+            font-size: 12px;
+        }
+
+
+        .coupon input:focus {
+            border-color: #111;
+        }
+
+
+        .coupon button {
+            width: 85px;
+            border: 1px solid #111;
+            background: #111;
+            color: white;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+
+        .coupon button:hover {
+            background: #333;
+        }
+
+
+        /* =====================================================
+           BOTÓN FINALIZAR
+        ====================================================== */
+
+        .checkout-button {
+            width: 100%;
+            height: 53px;
+            border: none;
+            background: #111;
+            color: #fff;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            cursor: pointer;
+            transition: all .25s ease;
+        }
+
+
+        .checkout-button:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+
+        /* =====================================================
+           CONTINUAR COMPRANDO
+        ====================================================== */
+
+        .continue-shopping {
+            display: block;
+            margin-top: 18px;
+            text-align: center;
+            color: #222;
+            font-size: 12px;
+            text-decoration: underline;
+        }
+
+
+        .continue-shopping:hover {
+            color: #666;
+        }
+
+
+        /* =====================================================
+           SEGURIDAD
+        ====================================================== */
+
+        .secure-payment {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e5;
+            text-align: center;
+        }
+
+
+        .secure-payment strong {
+            display: block;
+            font-size: 11px;
+            margin-bottom: 5px;
+        }
+
+
+        .secure-payment span {
+            color: #777;
+            font-size: 10px;
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           CARRITO VACÍO
+        ====================================================== */
+
+        .empty-cart {
+            display: none;
+            text-align: center;
+            padding: 80px 30px;
+            background: #fff;
+            border: 1px solid #e5e5e5;
+        }
+
+
+        .empty-cart-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+
+        .empty-cart h2 {
+            margin: 0 0 10px;
+            font-size: 23px;
+        }
+
+
+        .empty-cart p {
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+
+        .empty-cart a {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #111;
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        footer {
+            margin-top: 0;
+            padding: 30px;
+            text-align: center;
+            background: #111;
+            color: #fff;
+        }
+
+
+        footer p {
+            margin: 0;
+            font-size: 11px;
+            color: #ddd;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE TABLET
+        ====================================================== */
+
+        @media (max-width: 1100px) {
+
+            .cart-layout {
+                grid-template-columns: 1fr;
+            }
+
+
+            .summary {
+                position: static;
+            }
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ====================================================== */
+
+        @media (max-width: 750px) {
+
+            .cart-page {
+                padding: 35px 18px 60px;
+            }
+
+
+            .cart-header h1 {
+                font-size: 28px;
+            }
+
+
+            .cart-product {
+                grid-template-columns: 120px minmax(0, 1fr);
+                gap: 18px;
+                padding: 20px;
+            }
+
+
+            .product-image-wrapper {
+                width: 120px;
+                height: 155px;
+            }
+
+
+            .product-price {
+                grid-column: 2;
+                min-width: 0;
+                text-align: left;
+                padding-top: 0;
+            }
+
+
+            .product-details {
+                grid-template-columns: 1fr;
+            }
+
+
+            .product-actions {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE MÓVIL
+        ====================================================== */
+
+        @media (max-width: 500px) {
+
+            .cart-page {
+                padding: 25px 12px 50px;
+            }
+
+
+            .shipping-banner {
+                padding: 15px;
+            }
+
+
+            .cart-product {
+                grid-template-columns: 95px 1fr;
+                gap: 14px;
+                padding: 17px;
+            }
+
+
+            .product-image-wrapper {
+                width: 95px;
+                height: 130px;
+            }
+
+
+            .product-name {
+                font-size: 14px;
+            }
+
+
+            .product-price {
+                grid-column: 2;
+            }
+
+
+            .products-title {
+                padding: 18px;
+            }
+
+
+            .summary {
+                padding: 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header>
+
+        <!-- Barra superior -->
+
+        <div class="top-bar">
+
+            <a href="../paginaweb.html">
+
+                <img
+                    src="../assets/img/levlogo.png"
+                    alt="Logo Levi's"
+                    class="logo"
+                >
+
+            </a>
+
+
+            <div class="auth-buttons">
+
+                <button
+                    class="rounded-button"
+                    type="button"
+                    onclick="location.href='inicio.html';"
+                >
+                    INICIAR SESIÓN
+                </button>
+
+
+                <button
+                    class="rounded-button"
+                    type="button"
+                    onclick="location.href='registrarse.html';"
+                >
+                    REGISTRARSE
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             NAVBAR
+        ================================================== -->
+
+        <nav class="navbar">
+
+            <ul class="categories">
+
+
+                <!-- =================================================
+                     NEW ARRIVALS
+                ================================================== -->
+
+                <li class="dropdown">
+
+                    <a href="#">NEW ARRIVALS</a>
+
+
+                    <div class="dropdown-menu">
+
+                        <div class="column">
+
+                            <h3>DESTACADO</h3>
+
+                            <a href="Reinterpretado%20por%20Beyonce.html">
+                                REINTERPRETADO POR BEYONCE
+                            </a>
+
+                            <a href="lomasvendido.html">
+                                LO MÁS VENDIDO
+                            </a>
+
+                            <a href="otoño.html">
+                                COLECCIÓN OTOÑO-INVIERNO
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>NOVEDADES PARA HOMBRE</h3>
+
+                            <a href="hombre.html">ROPA</a>
+
+                            <a href="hombre.html">ACCESORIOS</a>
+
+                            <a href="hombre.html">
+                                SUDADERAS Y CHAMARRAS
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>NOVEDADES PARA MUJER</h3>
+
+                            <a href="mujer.html">ROPA</a>
+
+                            <a href="mujer.html">ACCESORIOS</a>
+
+                            <a href="mujer.html">
+                                SUDADERAS Y CHAMARRAS
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>NOVEDADES PARA KIDS</h3>
+
+                            <a href="kids.html">
+                                ROPA PARA NIÑOS
+                            </a>
+
+                            <a href="kids.html">
+                                SUDADERAS Y CHAMARRAS PARA NIÑOS
+                            </a>
+
+                            <a href="kids.html">
+                                ROPA PARA NIÑAS
+                            </a>
+
+                            <a href="kids.html">
+                                SUDADERAS Y CHAMARRAS PARA NIÑAS
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>ACCESORIOS</h3>
+
+                            <a href="accesorios.html">
+                                CINTURONES
+                            </a>
+
+                            <a href="accesorios.html">
+                                CARTERAS
+                            </a>
+
+                            <a href="accesorios.html">
+                                UNDERWEAR & SOCKS
+                            </a>
+
+                            <a href="accesorios.html">
+                                HEADWEAR
+                            </a>
+
+                            <a href="accesorios.html">
+                                GORRAS & GORROS
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </li>
+
+
+                <!-- =================================================
+                     HOMBRE
+                ================================================== -->
+
+                <li class="dropdown">
+
+                    <a href="#">HOMBRE</a>
+
+
+                    <div class="dropdown-menu">
+
+                        <div class="column">
+
+                            <h3>DESTACADO</h3>
+
+                            <a href="lomasvendido.html">
+                                LO MÁS NUEVO
+                            </a>
+
+                            <a href="lomasvendido.html">
+                                LO MÁS VENDIDO
+                            </a>
+
+                            <a href="otoño.html">
+                                COLECCIÓN OTOÑO-INVIERNO
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>ROPA</h3>
+
+                            <a href="hombre.html">VER TODO</a>
+
+                            <a href="hombre.html">JEANS</a>
+
+                            <a href="hombre.html">
+                                PANTALONES & SHORTS
+                            </a>
+
+                            <a href="hombre.html">
+                                CAMISAS Y PLAYERAS
+                            </a>
+
+                            <a href="hombre.html">POLOS</a>
+
+                            <a href="hombre.html">BIG & TALL</a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>SUDADERAS Y CHAMARRAS</h3>
+
+                            <a href="hombre.html">OUTERWEAR</a>
+
+                            <a href="hombre.html">SWEATERS</a>
+
+                            <a href="hombre.html">SUDADERAS</a>
+
+                            <a href="hombre.html">CHAMARRAS</a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>ACCESORIOS</h3>
+
+                            <a href="accesorios.html">
+                                CINTURONES
+                            </a>
+
+                            <a href="accesorios.html">
+                                CARTERAS
+                            </a>
+
+                            <a href="accesorios.html">
+                                UNDERWEAR & SOCKS
+                            </a>
+
+                            <a href="accesorios.html">
+                                HEADWEAR
+                            </a>
+
+                            <a href="accesorios.html">
+                                GORRAS & GORROS
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </li>
+
+
+                <!-- =================================================
+                     MUJER
+                ================================================== -->
+
+                <li class="dropdown">
+
+                    <a href="#">MUJER</a>
+
+
+                    <div class="dropdown-menu">
+
+                        <div class="column">
+
+                            <h3>DESTACADO</h3>
+
+                            <a href="lomasvendido.html">
+                                LO MÁS NUEVO
+                            </a>
+
+                            <a href="lomasvendido.html">
+                                LO MÁS VENDIDO
+                            </a>
+
+                            <a href="otoño.html">
+                                COLECCIÓN OTOÑO-INVIERNO
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>ROPA</h3>
+
+                            <a href="mujer.html">VER TODO</a>
+
+                            <a href="mujer.html">JEANS</a>
+
+                            <a href="mujer.html">PANTALONES</a>
+
+                            <a href="mujer.html">
+                                SHORTS & FALDAS
+                            </a>
+
+                            <a href="mujer.html">
+                                VESTIDOS & ONE PIECE
+                            </a>
+
+                            <a href="mujer.html">
+                                BIG & TALL
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>SUDADERAS Y CHAMARRAS</h3>
+
+                            <a href="mujer.html">OUTERWEAR</a>
+
+                            <a href="mujer.html">SWEATERS</a>
+
+                            <a href="mujer.html">SUDADERAS</a>
+
+                            <a href="mujer.html">CHAMARRAS</a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>ACCESORIOS</h3>
+
+                            <a href="accesorios.html">
+                                CINTURONES
+                            </a>
+
+                            <a href="accesorios.html">
+                                CARTERAS
+                            </a>
+
+                            <a href="accesorios.html">
+                                UNDERWEAR & SOCKS
+                            </a>
+
+                            <a href="accesorios.html">
+                                HEADWEAR
+                            </a>
+
+                            <a href="accesorios.html">
+                                GORRAS & GORROS
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </li>
+
+
+                <!-- =================================================
+                     KIDS
+                ================================================== -->
+
+                <li class="dropdown">
+
+                    <a href="#">KIDS</a>
+
+
+                    <div class="dropdown-menu">
+
+                        <div class="column">
+
+                            <h3>DESTACADO</h3>
+
+                            <a href="kids.html">
+                                LO MÁS NUEVO
+                            </a>
+
+                            <a href="kids.html">
+                                LO MÁS VENDIDO
+                            </a>
+
+                            <a href="kids.html">
+                                COLECCIÓN OTOÑO-INVIERNO
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>ROPA</h3>
+
+                            <a href="kids.html">VER TODO</a>
+
+                            <a href="kids.html">
+                                BEBÉS E INFANTIL
+                            </a>
+
+                            <a href="kids.html">
+                                PREESCOLAR
+                            </a>
+
+                            <a href="kids.html">
+                                NIÑOS/AS
+                            </a>
+
+                            <a href="kids.html">
+                                PLAYERAS
+                            </a>
+
+                            <a href="kids.html">
+                                BIG & TALL
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>SUDADERAS Y CHAMARRAS</h3>
+
+                            <a href="kids.html">OUTERWEAR</a>
+
+                            <a href="kids.html">SWEATERS</a>
+
+                            <a href="kids.html">SUDADERAS</a>
+
+                            <a href="kids.html">CHAMARRAS</a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>ACCESORIOS</h3>
+
+                            <a href="accesorios.html">
+                                CINTURONES
+                            </a>
+
+                            <a href="accesorios.html">
+                                UNDERWEAR & SOCKS
+                            </a>
+
+                            <a href="accesorios.html">
+                                HEADWEAR
+                            </a>
+
+                            <a href="accesorios.html">
+                                GORRAS & GORROS
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </li>
+
+
+                <!-- =================================================
+                     REBAJAS
+                ================================================== -->
+
+                <li class="dropdown">
+
+                    <a href="#">REBAJAS</a>
+
+
+                    <div class="dropdown-menu">
+
+                        <div class="column">
+
+                            <h3>TODAS LAS OFERTAS</h3>
+
+                            <a href="rebajas.html">
+                                OFERTAS DE ROPA
+                            </a>
+
+                            <a href="rebajas.html">
+                                OFERTAS DE ACCESORIOS
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>HOMBRE</h3>
+
+                            <a href="rebajas.html">
+                                VER TODO
+                            </a>
+
+                            <a href="rebajas.html">
+                                PLAYERAS
+                            </a>
+
+                            <a href="rebajas.html">
+                                SUDADERAS
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>OFERTAS POR TIEMPO LIMITADO</h3>
+
+                            <a href="rebajas.html">
+                                ÚLTIMA OPORTUNIDAD HASTA 40% OFF
+                            </a>
+
+                            <a href="rebajas.html">
+                                OFERTAS DE NUEVOS ESTILOS
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>ACCESORIOS</h3>
+
+                            <a href="rebajas.html">
+                                CINTURONES
+                            </a>
+
+                            <a href="rebajas.html">
+                                GORRAS & GORROS
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </li>
+
+            </ul>
+
+
+            <!-- =================================================
+                 BÚSQUEDA E ICONOS
+            ================================================== -->
+
+            <div class="navbar-icons">
+
+                <input
+                    type="text"
+                    placeholder="Buscar..."
+                    class="search-bar"
+                >
+
+
+                <img
+                    src="../assets/img/cora.png"
+                    alt="Favoritos"
+                    onclick="location.href='Favoritos.html';"
+                    style="cursor:pointer;"
+                >
+
+
+                <img
+                    src="../assets/img/bolsa.png"
+                    alt="Carrito"
+                    onclick="location.href='Carrito.html';"
+                    style="cursor:pointer;"
+                >
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         CONTENIDO DEL CARRITO
+    ====================================================== -->
+
+    <main class="cart-page">
+
+
+        <!-- ENCABEZADO -->
+
+        <div class="cart-header">
+
+            <h1>Tu carrito</h1>
+
+            <p>
+                Revisa tus productos antes de finalizar tu compra.
+            </p>
+
+        </div>
+
+
+
+        <!-- ENVÍO -->
+
+        <div class="shipping-banner">
+
+            <div class="shipping-icon">
+                ✓
+            </div>
+
+            <div class="shipping-text">
+
+                <strong>
+                    Envío gratis disponible
+                </strong>
+
+                <span>
+                    Disfruta de envío gratis en compras participantes.
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             LAYOUT
+        ================================================== -->
+
+        <div class="cart-layout">
+
+
+            <!-- =================================================
+                 PRODUCTOS
+            ================================================== -->
+
+            <section class="products-section" id="productsSection">
+
+
+                <div class="products-title">
+
+                    <h2>
+                        Productos
+                    </h2>
+
+                    <span id="productCount">
+                        7 artículos
+                    </span>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     PRODUCTO 1
+                ================================================== -->
+
+                <article
+                    class="cart-product"
+                    data-price="599"
+                >
+
+                    <div class="product-image-wrapper">
+
+                        <a href="producto.html">
+
+                            <img
+                                src="../assets/img/b3.png"
+                                alt="Playera Perfect Levi's"
+                                class="product-image"
+                            >
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-brand">
+                            Levi's®
+                        </span>
+
+                        <h3 class="product-name">
+
+                            <a href="producto.html">
+                                Playera Perfect Levi’s®
+                            </a>
+
+                        </h3>
+
+
+                        <div class="product-details">
+
+                            <div class="detail color-detail">
+
+                                <strong>Color:</strong>
+
+                                <span
+                                    class="color-circle"
+                                    style="background:#1e3d64;"
+                                ></span>
+
+                                Azul
+
+                            </div>
+
+
+                            <div class="detail">
+
+                                <strong>Talla:</strong>
+                                28
+
+                            </div>
+
+
+                            <div class="detail">
+
+                                <strong>Largo:</strong>
+                                32
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="product-actions">
+
+                            <div class="quantity-control">
+
+                                <button
+                                    class="quantity-button"
+                                    type="button"
+                                    onclick="changeQuantity(this, -1)"
+                                >
+                                    −
+                                </button>
+
+                                <span class="quantity-value">
+                                    1
+                                </span>
+
+                                <button
+                                    class="quantity-button"
+                                    type="button"
+                                    onclick="changeQuantity(this, 1)"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+
+                            <button
+                                class="remove-button"
+                                type="button"
+                                onclick="removeProduct(this)"
+                            >
+                                ELIMINAR
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="product-price">
+
+                        <span class="unit-price">
+                            $599.00
+                        </span>
+
+                        <span class="price-label">
+                            Precio unitario
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     PRODUCTO 2
+                ================================================== -->
+
+                <article
+                    class="cart-product"
+                    data-price="1399"
+                >
+
+                    <div class="product-image-wrapper">
+
+                        <a href="producto.html">
+
+                            <img
+                                src="../assets/img/b4.png"
+                                alt="Blusa Mona Denim Corset Levi's"
+                                class="product-image"
+                            >
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-brand">
+                            Levi's®
+                        </span>
+
+                        <h3 class="product-name">
+
+                            <a href="producto.html">
+                                Blusa Mona Denim Corset Levi’s®
+                            </a>
+
+                        </h3>
+
+
+                        <div class="product-details">
+
+                            <div class="detail color-detail">
+
+                                <strong>Color:</strong>
+
+                                <span
+                                    class="color-circle"
+                                    style="background:#345a86;"
+                                ></span>
+
+                                Azul
+
+                            </div>
+
+
+                            <div class="detail">
+
+                                <strong>Talla:</strong>
+                                28
+
+                            </div>
+
+
+                            <div class="detail">
+
+                                <strong>Largo:</strong>
+                                32
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="product-actions">
+
+                            <div class="quantity-control">
+
+                                <button
+                                    class="quantity-button"
+                                    type="button"
+                                    onclick="changeQuantity(this, -1)"
+                                >
+                                    −
+                                </button>
+
+                                <span class="quantity-value">
+                                    1
+                                </span>
+
+                                <button
+                                    class="quantity-button"
+                                    type="button"
+                                    onclick="changeQuantity(this, 1)"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+
+                            <button
+                                class="remove-button"
+                                type="button"
+                                onclick="removeProduct(this)"
+                            >
+                                ELIMINAR
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="product-price">
+
+                        <span class="unit-price">
+                            $1,399.00
+                        </span>
+
+                        <span class="price-label">
+                            Precio unitario
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     PRODUCTO 3
+                ================================================== -->
+
+                <article
+                    class="cart-product"
+                    data-price="1399"
+                >
+
+                    <div class="product-image-wrapper">
+
+                        <a href="producto.html">
+
+                            <img
+                                src="../assets/img/sudh.png"
+                                alt="Sudadera Levi's"
+                                class="product-image"
+                            >
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-brand">
+                            Levi's®
+                        </span>
+
+                        <h3 class="product-name">
+
+                            <a href="producto.html">
+                                Sudadera Levi’s®
+                            </a>
+
+                        </h3>
+
+
+                        <div class="product-details">
+
+                            <div class="detail color-detail">
+
+                                <strong>Color:</strong>
+
+                                <span
+                                    class="color-circle"
+                                    style="background:#d8a4b0;"
+                                ></span>
+
+                                Rosa
+
+                            </div>
+
+
+                            <div class="detail">
+
+                                <strong>Talla:</strong>
+                                28
+
+                            </div>
+
+
+                            <div class="detail">
+
+                                <strong>Largo:</strong>
+                                32
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="product-actions">
+
+                            <div class="quantity-control">
+
+                                <button
+                                    class="quantity-button"
+                                    type="button"
+                                    onclick="changeQuantity(this, -1)"
+                                >
+                                    −
+                                </button>
+
+                                <span class="quantity-value">
+                                    1
+                                </span>
+
+                                <button
+                                    class="quantity-button"
+                                    type="button"
+                                    onclick="changeQuantity(this, 1)"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+
+                            <button
+                                class="remove-button"
+                                type="button"
+                                onclick="removeProduct(this)"
+                            >
+                                ELIMINAR
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="product-price">
+
+                        <span class="unit-price">
+                            $1,399.00
+                        </span>
+
+                        <span class="price-label">
+                            Precio unitario
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     PRODUCTO 4
+                ================================================== -->
+
+                <article
+                    class="cart-product"
+                    data-price="1299"
+                >
+
+                    <div class="product-image-wrapper">
+
+                        <a href="producto.html">
+
+                            <img
+                                src="../assets/img/cam.png"
+                                alt="Falda Mermaid Levi's"
+                                class="product-image"
+                            >
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-brand">
+                            Levi's®
+                        </span>
+
+                        <h3 class="product-name">
+
+                            <a href="producto.html">
+                                Falda Mermaid Levi’s®
+                            </a>
+
+                        </h3>
+
+
+                        <div class="product-details">
+
+                            <div class="detail color-detail">
+
+                                <strong>Color:</strong>
+
+                                <span
+                                    class="color-circle"
+                                    style="background:#315f92;"
+                                ></span>
+
+                                Azul
+
+                            </div>
+
+
+                            <div class="detail">
+
+                                <strong>Talla:</strong>
+                                28
+
+                            </div>
+
+
+                            <div class="detail">
+
+                                <strong>Largo:</strong>
+                                32
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="product-actions">
+
+                            <div class="quantity-control">
+
+                                <button
+                                    class="quantity-button"
+                                    type="button"
+                                    onclick="changeQuantity(this, -1)"
+                                >
+                                    −
+                                </button>
+
+                                <span class="quantity-value">
+                                    1
+                                </span>
+
+                                <button
+                                    class="quantity-button"
+                                    type="button"
+                                    onclick="changeQuantity(this, 1)"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+
+                            <button
+                                class="remove-button"
+                                type="button"
+                                onclick="removeProduct(this)"
+                            >
+                                ELIMINAR
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="product-price">
+
+                        <span class="unit-price">
+                            $1,299.00
+                        </span>
+
+                        <span class="price-label">
+                            Precio unitario
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     PRODUCTO 5
+                ================================================== -->
+
+                <article
+                    class="cart-product"
+                    data-price="599"
+                >
+
+                    <div class="product-image-wrapper">
+
+                        <a href="producto.html">
+
+                            <img
+                                src="../assets/img/lar.png"
+                                alt="Playera Perfect Levi's"
+                                class="product-image"
+                            >
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-brand">
+                            Levi's®
+                        </span>
+
+                        <h3 class="product-name">
+
+                            <a href="producto.html">
+                                Playera Perfect Levi’s®
+                            </a>
+
+                        </h3>
+
+
+                        <div class="product-details">
+
+                            <div class="detail color-detail">
+
+                                <strong>Color:</strong>
+
+                                <span
+                                    class="color-circle"
+                                    style="background:#111;"
+                                ></span>
+
+                                Negro
+
+                            </div>
+
+
+                            <div class="detail">
+
+                                <strong>Talla:</strong>
+                                M
+
+                            </div>
+
+
+                            <div class="detail">
+
+                                <strong>Largo:</strong>
+                                30
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="product-actions">
+
+                            <div class="quantity-control">
+
+                                <button
+                                    class="quantity-button"
+                                    type="button"
+                                    onclick="changeQuantity(this, -1)"
+                                >
+                                    −
+                                </button>
+
+                                <span class="quantity-value">
+                                    1
+                                </span>
+
+                                <button
+                                    class="quantity-button"
+                                    type="button"
+                                    onclick="changeQuantity(this, 1)"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+
+                            <button
+                                class="remove-button"
+                                type="button"
+                                onclick="removeProduct(this)"
+                            >
+                                ELIMINAR
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="product-price">
+
+                        <span class="unit-price">
+                            $599.00
+                        </span>
+
+                        <span class="price-label">
+                            Precio unitario
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     PRODUCTO 6
+                ================================================== -->
+
+                <article
+                    class="cart-product"
+                    data-price="1399"
+                >
+
+                    <div class="product-image-wrapper">
+
+                        <a href="producto.html">
+
+                            <img
+                                src="../assets/img/b1.png"
+                                alt="Blusa Mona Denim Corset Levi's"
+                                class="product-image"
+                            >
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-brand">
+                            Levi's®
+                        </span>
+
+                        <h3 class="product-name">
+
+                            <a href="producto.html">
+                                Blusa Mona Denim Corset Levi’s®
+                            </a>
+
+                        </h3>
+
+
+                        <div class="product-details">
+
+                            <div class="detail color-detail">
+
+                                <strong>Color:</strong>
+
+                                <span
+                                    class="color-circle"
+                                    style="background:#d9a5b3;"
+                                ></span>
+
+                                Rosa
+
+                            </div>
+
+
+                            <div class="detail">
+
+                                <strong>Talla:</strong>
+                                S
+
+                            </div>
+
+
+                            <div class="detail">
+
+                                <strong>Largo:</strong>
+                                28
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="product-actions">
+
+                            <div class="quantity-control">
+
+                                <button
+                                    class="quantity-button"
+                                    type="button"
+                                    onclick="changeQuantity(this, -1)"
+                                >
+                                    −
+                                </button>
+
+                                <span class="quantity-value">
+                                    1
+                                </span>
+
+                                <button
+                                    class="quantity-button"
+                                    type="button"
+                                    onclick="changeQuantity(this, 1)"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+
+                            <button
+                                class="remove-button"
+                                type="button"
+                                onclick="removeProduct(this)"
+                            >
+                                ELIMINAR
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="product-price">
+
+                        <span class="unit-price">
+                            $1,399.00
+                        </span>
+
+                        <span class="price-label">
+                            Precio unitario
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     PRODUCTO 7
+                ================================================== -->
+
+                <article
+                    class="cart-product"
+                    data-price="1399"
+                >
+
+                    <div class="product-image-wrapper">
+
+                        <a href="producto.html">
+
+                            <img
+                                src="../assets/img/pro1.png"
+                                alt="Blusa Mona Denim Corset Levi's"
+                                class="product-image"
+                            >
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-brand">
+                            Levi's®
+                        </span>
+
+                        <h3 class="product-name">
+
+                            <a href="producto.html">
+                                Blusa Mona Denim Corset Levi’s®
+                            </a>
+
+                        </h3>
+
+
+                        <div class="product-details">
+
+                            <div class="detail color-detail">
+
+                                <strong>Color:</strong>
+
+                                <span
+                                    class="color-circle"
+                                    style="background:#fff;"
+                                ></span>
+
+                                Blanco
+
+                            </div>
+
+
+                            <div class="detail">
+
+                                <strong>Talla:</strong>
+                                L
+
+                            </div>
+
+
+                            <div class="detail">
+
+                                <strong>Largo:</strong>
+                                32
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="product-actions">
+
+                            <div class="quantity-control">
+
+                                <button
+                                    class="quantity-button"
+                                    type="button"
+                                    onclick="changeQuantity(this, -1)"
+                                >
+                                    −
+                                </button>
+
+                                <span class="quantity-value">
+                                    1
+                                </span>
+
+                                <button
+                                    class="quantity-button"
+                                    type="button"
+                                    onclick="changeQuantity(this, 1)"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+
+                            <button
+                                class="remove-button"
+                                type="button"
+                                onclick="removeProduct(this)"
+                            >
+                                ELIMINAR
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="product-price">
+
+                        <span class="unit-price">
+                            $1,399.00
+                        </span>
+
+                        <span class="price-label">
+                            Precio unitario
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 CARRITO VACÍO
+            ================================================== -->
+
+            <section
+                class="empty-cart"
+                id="emptyCart"
+            >
+
+                <div class="empty-cart-icon">
+                    🛍
+                </div>
+
+                <h2>
+                    Tu carrito está vacío
+                </h2>
+
+                <p>
+                    Agrega algunos productos para comenzar tu compra.
+                </p>
+
+                <a href="hombre.html">
+                    SEGUIR COMPRANDO
+                </a>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 RESUMEN
+            ================================================== -->
+
+            <aside class="summary" id="summary">
+
+
+                <h2>
+                    Resumen de compra
+                </h2>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <strong id="subtotal">
+                        $0.00
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Envío
+                    </span>
+
+                    <strong id="shipping">
+                        GRATIS
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-divider"></div>
+
+
+                <div class="coupon-title">
+                    ¿Tienes un código promocional?
+                </div>
+
+
+                <div class="coupon">
+
+                    <input
+                        type="text"
+                        id="couponInput"
+                        placeholder="Código promocional"
+                    >
+
+                    <button
+                        type="button"
+                        onclick="applyCoupon()"
+                    >
+                        APLICAR
+                    </button>
+
+                </div>
+
+
+                <div class="summary-total">
+
+                    <span>
+                        TOTAL
+                    </span>
+
+                    <strong id="total">
+                        $0.00
+                    </strong>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="checkout-button"
+                    onclick="checkout()"
+                >
+                    FINALIZAR COMPRA
+                </button>
+
+
+                <a
+                    href="hombre.html"
+                    class="continue-shopping"
+                >
+                    ← CONTINUAR COMPRANDO
+                </a>
+
+
+                <div class="secure-payment">
+
+                    <strong>
+                        🔒 COMPRA SEGURA
+                    </strong>
+
+                    <span>
+                        Tus datos están protegidos durante todo el proceso de compra.
+                    </span>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <p>
+            &copy; 2024 Levi's. Todos los derechos reservados.
+        </p>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT DEL CARRITO
+    ====================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           CAMBIAR CANTIDAD
+        ====================================================== */
+
+        function changeQuantity(button, amount) {
+
+            const product = button.closest('.cart-product');
+
+            const quantityElement =
+                product.querySelector('.quantity-value');
+
+
+            let quantity =
+                parseInt(quantityElement.textContent);
+
+
+            quantity += amount;
+
+
+            if (quantity < 1) {
+                quantity = 1;
+            }
+
+
+            quantityElement.textContent = quantity;
+
+
+            updateCart();
+
+        }
+
+
+
+        /* =====================================================
+           ELIMINAR PRODUCTO
+        ====================================================== */
+
+        function removeProduct(button) {
+
+            const product =
+                button.closest('.cart-product');
+
+
+            product.style.opacity = '0';
+
+
+            product.style.transform = 'translateX(30px)';
+
+
+            setTimeout(function () {
+
+                product.remove();
+
+                updateCart();
+
+            }, 250);
+
+        }
+
+
+
+        /* =====================================================
+           ACTUALIZAR CARRITO
+        ====================================================== */
+
+        function updateCart() {
+
+            const products =
+                document.querySelectorAll('.cart-product');
+
+
+            let subtotal = 0;
+
+            let quantityTotal = 0;
+
+
+            products.forEach(function (product) {
+
+                const price =
+                    parseFloat(product.dataset.price);
+
+
+                const quantity =
+                    parseInt(
+                        product.querySelector('.quantity-value').textContent
+                    );
+
+
+                subtotal += price * quantity;
+
+                quantityTotal += quantity;
+
+            });
+
+
+            const shipping = 0;
+
+            const total = subtotal + shipping;
+
+
+            document.getElementById('subtotal').textContent =
+                formatPrice(subtotal);
+
+
+            document.getElementById('total').textContent =
+                formatPrice(total);
+
+
+            document.getElementById('shipping').textContent =
+                shipping === 0
+                    ? 'GRATIS'
+                    : formatPrice(shipping);
+
+
+            document.getElementById('productCount').textContent =
+                quantityTotal +
+                (quantityTotal === 1 ? ' artículo' : ' artículos');
+
+
+            /* Mostrar carrito vacío */
+
+            if (products.length === 0) {
+
+                document.getElementById('productsSection').style.display =
+                    'none';
+
+                document.getElementById('summary').style.display =
+                    'none';
+
+                document.getElementById('emptyCart').style.display =
+                    'block';
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           FORMATO DE PRECIO
+        ====================================================== */
+
+        function formatPrice(value) {
+
+            return '$' +
+                value.toLocaleString('es-MX', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+
+        }
+
+
+
+        /* =====================================================
+           CUPÓN
+        ====================================================== */
+
+        function applyCoupon() {
+
+            const input =
+                document.getElementById('couponInput');
+
+
+            const code =
+                input.value.trim().toUpperCase();
+
+
+            if (code === '') {
+
+                alert('Escribe un código promocional.');
+
+                return;
+
+            }
+
+
+            if (code === 'LEVIS10') {
+
+                alert(
+                    '¡Cupón aplicado! 10% de descuento.'
+                );
+
+            } else {
+
+                alert(
+                    'El código promocional no es válido.'
+                );
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           FINALIZAR COMPRA
+        ====================================================== */
+
+        function checkout() {
+
+            const products =
+                document.querySelectorAll('.cart-product');
+
+
+            if (products.length === 0) {
+
+                alert(
+                    'Tu carrito está vacío.'
+                );
+
+                return;
+
+            }
+
+
+            alert(
+                'Esta función llevará al proceso de compra.'
+            );
+
+        }
+
+
+
+        /* =====================================================
+           INICIALIZAR
+        ====================================================== */
+
+        document.addEventListener(
+            'DOMContentLoaded',
+            function () {
+
+                updateCart();
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

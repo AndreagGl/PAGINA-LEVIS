@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INICIO USUARIO</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/styles1.css">
+</head>
+
+<body>
+
+    <header>
+
+        <!-- Logo y saludo con imagen de usuario -->
+        <div class="top-bar">
+
+            <a href="../paginaweb.php">
+                <img
+                    src="../assets/img/levlogo.png"
+                    alt="Logo Levi's"
+                    class="logo"
+                >
+            </a>
+
+            <div class="user-info">
+
+                <span>Hola, Rebeca</span>
+
+                <img
+                    src="../assets/img/usuario.png"
+                    alt="Imagen de usuario"
+                    class="user-image"
+                    onclick="toggleMenu()"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- Barra de categorías y búsqueda -->
+        <nav class="navbar">
+
+            <ul class="categories">
+
+                <!-- ==================== NEW ARRIVALS ==================== -->
+                <li class="dropdown">
+
+                    <a href="#">NEW ARRIVALS</a>
+
+                    <div class="dropdown-menu">
+
+                        <div class="column">
+
+                            <h3>DESTACADO</h3>
+
+                            <a href="Reinterpretado_por_Beyonce.php">
+                                REINTERPRETADO POR BEYONCE
+                            </a>
+
+                            <a href="lomasvendido.php">
+                                LO MÁS VENDIDO
+                            </a>
+
+                            <a href="otono.php">
+                                COLECCIÓN OTOÑO-INVIERNO
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>NOVEDADES PARA HOMBRE</h3>
+
+                            <a href="hombre.php">ROPA</a>
+
+                            <a href="hombre.php">ACCESORIOS</a>
+
+                            <a href="hombre.php">
+                                SUDADERAS Y CHAMARRAS
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>NOVEDADES PARA MUJER</h3>
+
+                            <a href="mujer.php">ROPA</a>
+
+                            <a href="mujer.php">ACCESORIOS</a>
+
+                            <a href="mujer.php">
+                                SUDADERAS Y CHAMARRAS
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>NOVEDADES PARA KIDS</h3>
+
+                            <a href="kids.php">
+                                ROPA PARA NIÑOS
+                            </a>
+
+                            <a href="kids.php">
+                                SUDADERAS Y CHAMARRAS PARA NIÑOS
+                            </a>
+
+                            <a href="kids.php">
+                                ROPA PARA NIÑAS
+                            </a>
+
+                            <a href="kids.php">
+                                SUDADERAS Y CHAMARRAS PARA NIÑAS
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>ACCESORIOS</h3>
+
+                            <a href="accesorios.php">
+                                CINTURONES
+                            </a>
+
+                            <a href="accesorios.php">
+                                CARTERAS
+                            </a>
+
+                            <a href="accesorios.php">
+                                UNDERWEAR & SOCKS
+                            </a>
+
+                            <a href="accesorios.php">
+                                HEADWEAR
+                            </a>
+
+                            <a href="accesorios.php">
+                                GORRAS & GORROS
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </li>
+
+
+                <!-- ==================== HOMBRE ==================== -->
+                <li class="dropdown">
+
+                    <a href="#">HOMBRE</a>
+
+                    <div class="dropdown-menu">
+
+                        <div class="column">
+
+                            <h3>DESTACADO</h3>
+
+                            <a href="lomasvendido.php">
+                                LO MÁS NUEVO
+                            </a>
+
+                            <a href="lomasvendido.php">
+                                LO MÁS VENDIDO
+                            </a>
+
+                            <a href="otono.php">
+                                COLECCIÓN OTOÑO-INVIERNO
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>ROPA</h3>
+
+                            <a href="hombre.php">VER TODO</a>
+
+                            <a href="hombre.php">JEANS</a>
+
+                            <a href="hombre.php">
+                                PANTALONES & SHORTS
+                            </a>
+
+                            <a href="hombre.php">
+                                CAMISAS Y PLAYERAS
+                            </a>
+
+                            <a href="hombre.php">POLOS</a>
+
+                            <a href="hombre.php">BIG & TALL</a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>SUDADERAS Y CHAMARRAS</h3>
+
+                            <a href="hombre.php">OUTERWEAR</a>
+
+                            <a href="hombre.php">SWEATERS</a>
+
+                            <a href="hombre.php">SUDADERAS</a>
+
+                            <a href="hombre.php">CHAMARRAS</a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>ACCESORIOS</h3>
+
+                            <a href="accesorios.php">
+                                CINTURONES
+                            </a>
+
+                            <a href="accesorios.php">
+                                CARTERAS
+                            </a>
+
+                            <a href="accesorios.php">
+                                UNDERWEAR & SOCKS
+                            </a>
+
+                            <a href="accesorios.php">
+                                HEADWEAR
+                            </a>
+
+                            <a href="accesorios.php">
+                                GORRAS & GORROS
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </li>
+
+
+                <!-- ==================== MUJER ==================== -->
+                <li class="dropdown">
+
+                    <a href="#">MUJER</a>
+
+                    <div class="dropdown-menu">
+
+                        <div class="column">
+
+                            <h3>DESTACADO</h3>
+
+                            <a href="lomasvendido.php">
+                                LO MÁS NUEVO
+                            </a>
+
+                            <a href="lomasvendido.php">
+                                LO MÁS VENDIDO
+                            </a>
+
+                            <a href="otono.php">
+                                COLECCIÓN OTOÑO-INVIERNO
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>ROPA</h3>
+
+                            <a href="mujer.php">VER TODO</a>
+
+                            <a href="mujer.php">JEANS</a>
+
+                            <a href="mujer.php">PANTALONES</a>
+
+                            <a href="mujer.php">
+                                SHORTS & FALDAS
+                            </a>
+
+                            <a href="mujer.php">
+                                VESTIDOS & ONE PIECE
+                            </a>
+
+                            <a href="mujer.php">BIG & TALL</a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>SUDADERAS Y CHAMARRAS</h3>
+
+                            <a href="mujer.php">OUTERWEAR</a>
+
+                            <a href="mujer.php">SWEATERS</a>
+
+                            <a href="mujer.php">SUDADERAS</a>
+
+                            <a href="mujer.php">CHAMARRAS</a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>ACCESORIOS</h3>
+
+                            <a href="accesorios.php">
+                                CINTURONES
+                            </a>
+
+                            <a href="accesorios.php">
+                                CARTERAS
+                            </a>
+
+                            <a href="accesorios.php">
+                                UNDERWEAR & SOCKS
+                            </a>
+
+                            <a href="accesorios.php">
+                                HEADWEAR
+                            </a>
+
+                            <a href="accesorios.php">
+                                GORRAS & GORROS
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </li>
+
+
+                <!-- ==================== KIDS ==================== -->
+                <li class="dropdown">
+
+                    <a href="#">KIDS</a>
+
+                    <div class="dropdown-menu">
+
+                        <div class="column">
+
+                            <h3>DESTACADO</h3>
+
+                            <a href="kids.php">
+                                LO MÁS NUEVO
+                            </a>
+
+                            <a href="kids.php">
+                                LO MÁS VENDIDO
+                            </a>
+
+                            <a href="kids.php">
+                                COLECCIÓN OTOÑO-INVIERNO
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>ROPA</h3>
+
+                            <a href="kids.php">VER TODO</a>
+
+                            <a href="kids.php">
+                                BEBÉS E INFANTIL
+                            </a>
+
+                            <a href="kids.php">
+                                PREESCOLAR
+                            </a>
+
+                            <a href="kids.php">
+                                NIÑOS/AS
+                            </a>
+
+                            <a href="kids.php">
+                                PLAYERAS
+                            </a>
+
+                            <a href="kids.php">
+                                BIG & TALL
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>SUDADERAS Y CHAMARRAS</h3>
+
+                            <a href="kids.php">OUTERWEAR</a>
+
+                            <a href="kids.php">SWEATERS</a>
+
+                            <a href="kids.php">SUDADERAS</a>
+
+                            <a href="kids.php">CHAMARRAS</a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>ACCESORIOS</h3>
+
+                            <a href="accesorios.php">
+                                CINTURONES
+                            </a>
+
+                            <a href="accesorios.php">
+                                UNDERWEAR & SOCKS
+                            </a>
+
+                            <a href="accesorios.php">
+                                HEADWEAR
+                            </a>
+
+                            <a href="accesorios.php">
+                                GORRAS & GORROS
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </li>
+
+
+                <!-- ==================== REBAJAS ==================== -->
+                <li class="dropdown">
+
+                    <a href="#">REBAJAS</a>
+
+                    <div class="dropdown-menu">
+
+                        <div class="column">
+
+                            <h3>TODAS LAS OFERTAS</h3>
+
+                            <a href="rebajas.php">
+                                OFERTAS DE ROPA
+                            </a>
+
+                            <a href="rebajas.php">
+                                OFERTAS DE ACCESORIOS
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>HOMBRE</h3>
+
+                            <a href="rebajas.php">VER TODO</a>
+
+                            <a href="rebajas.php">PLAYERAS</a>
+
+                            <a href="rebajas.php">SUDADERAS</a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>OFERTAS POR TIEMPO LIMITADO</h3>
+
+                            <a href="rebajas.php">
+                                ÚLTIMA OPORTUNIDAD HASTA 40% OFF
+                            </a>
+
+                            <a href="rebajas.php">
+                                OFERTAS DE NUEVOS ESTILOS
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>ACCESORIOS</h3>
+
+                            <a href="rebajas.php">
+                                CINTURONES
+                            </a>
+
+                            <a href="rebajas.php">
+                                GORRAS & GORROS
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </li>
+
+            </ul>
+
+
+            <!-- ==================== BÚSQUEDA E ICONOS ==================== -->
+            <div class="navbar-icons">
+
+                <input
+                    type="text"
+                    placeholder="Buscar..."
+                    class="search-bar"
+                >
+
+                <img
+                    src="../assets/img/cora.png"
+                    alt="Favoritos"
+                    onclick="location.href='Favoritos.php';"
+                    style="cursor: pointer;"
+                >
+
+                <img
+                    src="../assets/img/bolsa.png"
+                    alt="Carrito"
+                    onclick="location.href='Carrito.php';"
+                    style="cursor: pointer;"
+                >
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+
+    <main>
+
+        <div class="hero-section">
+
+            <h1>Bienvenido a Levi's Collection</h1>
+
+            <img
+                src="../assets/img/foti.png"
+                alt="Modelo principal"
+                class="main-image"
+            >
+
+        </div>
+
+
+        <!-- Galería de imágenes -->
+        <section class="image-gallery">
+
+            <img
+                src="../assets/img/sudh.png"
+                alt="Sudadera"
+            >
+
+            <img
+                src="../assets/img/cam.png"
+                alt="Camisa"
+            >
+
+            <img
+                src="../assets/img/cha.png"
+                alt="Chamarra"
+            >
+
+            <img
+                src="../assets/img/lar.png"
+                alt="Producto"
+            >
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================== MENÚ DEL USUARIO ==================== -->
+
+    <div class="user-menu">
+
+        <div
+            class="dropdown-content"
+            id="userDropdown"
+        >
+
+            <a href="Favoritos.php">
+                Lista de deseos
+            </a>
+
+            <a href="editarperfil.php">
+                Editar perfil
+            </a>
+
+            <a href="inicio.php">
+                Cerrar sesión
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+
+    <script>
+
+        function toggleMenu() {
+
+            const menu = document.getElementById("userDropdown");
+
+            if (menu.style.display === "block") {
+
+                menu.style.display = "none";
+
+            } else {
+
+                menu.style.display = "block";
+
+            }
+
+        }
+
+
+        // Cerrar el menú al hacer clic fuera
+        window.addEventListener("click", function(event) {
+
+            const userImage =
+                document.querySelector(".user-image");
+
+            const menu =
+                document.getElementById("userDropdown");
+
+            if (
+                !event.target.matches(".user-image") &&
+                !menu.contains(event.target)
+            ) {
+
+                menu.style.display = "none";
+
+            }
+
+        });
+
+    </script>
+
+
+    <!-- ==================== FOOTER ==================== -->
+
+    <footer>
+
+        <p>
+            &copy; 2024 Levi's. Todos los derechos reservados.
+        </p>
+
+    </footer>
+
+</body>
+</html>

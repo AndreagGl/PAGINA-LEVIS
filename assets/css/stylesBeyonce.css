@@ -1,0 +1,474 @@
+/* Estilo global */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;
+    color: black;
+}
+
+/* Barra superior con logo y botones */
+.top-bar {
+    background-color: #161616;
+    padding: 0px 25px; /* Barra delgada */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 1; /* Aclarado */
+}
+
+.logo {
+    height: 100px; /* Logo tamaño */
+}
+
+.auth-buttons .rounded-button {
+    background: rgb(241, 240, 251);
+    border: 1px solid black;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.auth-buttons .rounded-button:hover {
+    background: black;
+    color: white;
+}
+
+/* Categorías y búsqueda */
+.navbar {
+    background-color: black;
+    padding: 15px;
+    display: flex;
+    justify-content: start; /* Centrar categorías */
+    align-items: flex-start;
+}
+
+.categories {
+    display: flex;
+    justify-content: center; /* Centra las categorías */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px; /* Espacio entre categorías */
+}
+
+.categories li {
+    position: relative; /* Menús desplegables */
+}
+
+.categories a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.categories a:hover {
+    text-decoration: underline;
+}
+
+.navbar-icons {
+    display: flex;
+    position: absolute;
+    right: 25px; /* Ajustar posición a la derecha */
+    gap: 25px; /* Espaciado entre los iconos */
+}
+
+.navbar-icons img {
+    width: 50px; /* Ancho */
+    height: 30px;
+}
+
+.search-bar {
+    padding: 5px;
+    border-radius: 20px;
+    border: 1px solid black;
+    font-size: 14px;
+    margin-left: 10px;
+    width: 100%;
+    max-width: 250px;
+}
+
+/* Estilo del menú */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 120%; /* Ajusta la distancia para que quede más abajo */
+    left: 50%; /* Centra el menú */
+    transform: translateX(-50%); /* Centra el menú */
+    background-color: black;
+    width: 1000px; /* Ancho de la barra del menú */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1; /* Se pone en la capa de arriba */
+    flex-direction: row; /* Columnas horizontales */
+    gap: 20px; /* Espacio entre las columnas */
+}
+
+/* Aseguramos que todos los menús aparezcan en la misma posición */
+.categories li {
+    margin: 0 15px;
+    position: relative; /* Necesario para posicionar el menú relativo a cada categoría */
+}
+
+/* Mostrar el menú al pasar el mouse */
+.categories li:hover .dropdown-menu {
+    display: flex; /* Muestra el menú al pasar el mouse */
+}
+
+/* Ajustar las columnas del menú */
+.dropdown-menu .column {
+    flex: 1;
+    padding: 10px;
+}
+
+/* Títulos de las columnas */
+.dropdown-menu .column h3 {
+    color: white;
+    margin-bottom: 10px;
+    font-size: 15px;
+    border-bottom: 1px solid #575757;
+    width: 100%; /* Asegura que todas las líneas tengan el mismo tamaño */
+    box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+}
+
+/* Enlaces dentro del menú */
+.dropdown-menu a {
+    color: white;
+    padding: 12px 20px;
+    display: block;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+/* Efecto hover en los enlaces del menú */
+.dropdown-menu a:hover {
+    background-color: #575757;
+}
+
+/* Sección principal (Hero) */
+.hero-section {
+    text-align: center;
+    padding: 20px;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.hero-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Galería de imágenes */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 30px;
+    background-color: #ffffff;
+}
+
+.image-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: black;
+    color: white;
+}
+
+
+
+.main-images {
+    display: flex;
+    justify-content: center; /* Centra las imágenes horizontalmente */
+    margin-bottom: 20px; /* Espacio entre las imágenes y el video */
+    margin-top: 55px;
+}
+
+.main-image {
+    width: 755px; /* Ajusta el tamaño de las imágenes */
+    height: auto; /* Mantiene las proporciones */
+    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra (opcional) */
+}
+
+
+/* Contenedor principal */
+.media-container {
+    display: flex;
+    flex-direction: row; /* Elementos en fila */
+    align-items: flex-start; /* Alinea al inicio (vertical) */
+    justify-content: flex-start; /* Alinea los elementos más cerca horizontalmente */
+    gap: 10px; /* Espacio reducido entre video y foto */
+    margin: 20px 0; /* Margen superior e inferior */
+}
+
+
+/* Estilo del video */
+.main-video {
+    width: 100%;
+    max-width: 850px; /* Ancho máximo */
+    height: auto; /* Mantén la proporción */
+    border: 1px solid black; /* Borde opcional */
+    border-radius: 10px; /* Esquinas redondeadas */
+}
+
+/* Contenedor de la foto y descripción */
+.side-content {
+    display: flex;
+    flex-direction: column; /* Coloca descripción y foto en columna */
+    align-items: flex-start; /* Alinea al inicio horizontalmente */
+    text-align: start; /* Alinea el texto a la izquierda */
+    gap: 10px; /* Espacio entre la descripción y la foto */
+    margin-left: 100px; /* Aproxima la foto al video */
+}
+
+/* Estilo de la descripción */
+.description p {
+    margin: 0; /* Elimina margen extra */
+}
+
+
+/* Contenedor principal para las 3 imágenes y descripciones */
+.product-container {
+    display: flex; /* Alinea los elementos horizontalmente */
+    justify-content: space-between; /* Espacio uniforme entre los elementos */
+    gap: 20px; /* Espacio entre cada producto */
+    margin-top: 20px; /* Margen superior */
+}
+
+/* Estilo de los contenedores de imagen y descripción */
+.side-content {
+    display: flex;
+    flex-direction: column; /* Coloca la imagen y la descripción en columna */
+    align-items: start; /* Centra horizontalmente */
+    text-align: start; /* Centra el texto */
+    width: 30%; /* Asigna un ancho del 30% para cada producto */
+    box-sizing: border-box; /* Incluye el padding y border en el cálculo del ancho */
+}
+
+/* Estilo de la imagen */
+.side-image {
+    width: 100%; /* La imagen ocupa el 100% del ancho disponible */
+    height: auto; /* Mantiene la proporción */
+    border-radius: 10px; /* Esquinas redondeadas */
+}
+
+.description .price {
+    font-weight: bold; /* Resalta el precio */
+    font-size: 1.2em; /* Tamaño más grande */
+    color: #2a2a2a; /* Color del precio */
+}
+
+
+.user-image {
+    width: 40px; /* Tamaño más pequeño */
+    height: auto; /* Mantener la proporción */
+    cursor: pointer;
+    margin-right: auto; /* Empujar a la izquierda */
+}
+
+
+/* Para la barra de navegación */
+.navbar {
+    display: flex;
+    justify-content: flex-start; /* Alinea los elementos a la izquierda */
+    align-items: center;
+    padding: 10px;
+}
+
+/* Asegura que las categorías se alineen a la izquierda */
+.navbar .categories {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Ajusta el espacio entre las categorías */
+    flex-grow: 1; /* Permite que las categorías se expanda hacia la izquierda */
+}
+
+
+
+
+.user-info {
+    display: flex;
+    align-items: center; 
+}
+
+.user-info span {
+    font-size: 18px; /* Ajusta el tamaño del texto */
+    color: #ffffff; /* Color del texto */
+    margin-right: 10px; /* Espacio entre el texto y la imagen */
+}
+
+.user-image {
+    width: 45px; /* Ajusta el ancho de la imagen */
+    height: 45px; /* Ajusta la altura de la imagen */
+    border-radius: 50%; /* Hace la imagen circular */
+    object-fit: cover; /* Asegura que la imagen mantenga sus proporciones */
+}
+
+
+/* Menú oculto por defecto */
+#userDropdown {
+    display: none;
+    position: absolute;  /* Posicionarlo sobre otros elementos */
+    top: 65px;          /* Ajustar la distancia desde la parte superior */
+    right: 20px;         /* Ajustar según el diseño */
+    background-color: rgb(0, 0, 0);
+    border: 1px solid #ccc;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Estilo adicional para las opciones del menú */
+#userDropdown a {
+    color: white;
+    padding: 16px 36px;
+    text-decoration: none;
+    display: block;
+}
+
+#userDropdown a:hover {
+    background-color: #bebebe;
+}
+
+
+/* Icono de filtro */
+.filter-image {
+    width: 45px; /* Tamaño pequeño */
+    height: auto; /* Mantener la proporción */
+    cursor: pointer;
+    margin-left: 10px; /* Espaciado hacia la izquierda */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Contenedor del icono de filtro */
+.filter-icon-container {
+    position: relative; /* Posición relativa para el posicionamiento del menú */
+}
+
+/* Icono de filtro */
+.filter-image {
+    width: 45px; /* Tamaño pequeño */
+    height: auto; /* Mantener la proporción */
+    cursor: pointer;
+    margin-left: 10px; /* Espaciado hacia la izquierda */
+    position: relative; /* Importante para que el menú se posicione relativo a este icono */
+}
+
+/* Estilos para el menú desplegable de filtro */
+.filter-menu {
+    display: none;
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: calc(100% + 5px); /* Ajusta esta posición para que quede justo debajo del ícono */
+    left: 190%; /* Alineado al centro del icono */
+    transform: translateX(-50%); /* Centrando el menú respecto al icono */
+    width: 200px; /* Define un ancho adecuado para el menú */
+}
+
+.filter-menu a {
+    color: rgb(255, 251, 251);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.filter-menu a:hover {
+    background-color: #4b4b4b;
+}
+
+/* Estilos específicos para mantener el menú visible cuando se hace clic */
+.filter-image:focus + .filter-menu,
+.filter-menu:hover {
+    display: block;
+}
+
+
+
+/* Galería de imágenes */
+.image-gallery1 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 30px;
+    background-color: #f0f8ff;
+}
+
+.image-gallery1 img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-gallery1 img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}

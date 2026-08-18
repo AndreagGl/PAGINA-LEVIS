@@ -1,0 +1,113 @@
+/* Estilos generales */
+body {
+    background-color: #f0f8ff; /* Fondo claro */
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Contenedor principal del login */
+.container {
+    width: 500px; /* Ancho más grande */
+    height: auto; /* Altura ajustable automáticamente */
+    padding: 30px; /* Más espacio interior */
+    margin: 100px auto; /* Centrado horizontal y vertical */
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    text-align: center;
+}
+
+/* Título */
+.container h2 {
+    font-size: 1.8em; /* Título más grande */
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Subtítulo */
+.container p {
+    font-size: 1.1em; /* Subtítulo más grande */
+    margin-bottom: 25px;
+}
+
+/* Campo de entrada de correo electrónico */
+.container input[type="email"] {
+    width: 90%; /* Aumentar el ancho del campo */
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* Contenedor de contraseña */
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input {
+    width: 90%; /* Aumentar el ancho del campo */
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.password-container .toggle-password {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+}
+
+/* Botón principal */
+.container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #000;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.container button:hover {
+    background-color: #333;
+}
+
+/* Enlaces */
+.container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.container a:hover {
+    text-decoration: underline;
+}
+
+/* Botón secundario */
+.secondary-button {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.secondary-button:hover {
+    background-color: #e0e0e0;
+}

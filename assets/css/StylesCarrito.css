@@ -1,0 +1,119 @@
+/* Contenedor principal de la lista de productos */
+.product-list {
+    display: grid; /* Usamos Grid Layout */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Columnas responsivas */
+    gap: 20px; /* Espacio entre los elementos */
+    padding: 20px; /* Espaciado interno */
+    background-color: #f5f5f5; /* Color de fondo */
+    border-radius: 10px; /* Bordes redondeados del contenedor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    justify-items: center; /* Centra los elementos dentro de la grid */
+}
+
+/* Contenedor individual de cada producto */
+.product-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos horizontalmente */
+    text-align: center; /* Centra el texto */
+    background: white;
+    border: 1px solid #ddd; /* Borde ligero */
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para cada producto */
+    width: 100%; /* Hace que cada contenedor llene su celda de la grid */
+}
+
+/* Imagen del producto */
+.product-container img {
+    width: 100%; /* Ajusta al ancho del contenedor */
+    height: 200px; /* Altura fija */
+    object-fit: cover; /* Mantiene la proporción */
+    border-radius: 8px; /* Bordes redondeados */
+    margin-bottom: 10px; /* Espacio debajo de la imagen */
+}
+
+/* Estilo del texto descriptivo */
+.description p {
+    margin: 5px 0; /* Márgenes verticales */
+    font-size: 14px; /* Tamaño de texto */
+    color: #333; /* Color del texto */
+}
+
+/* Precio del producto */
+.price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #e63946; /* Color destacado */
+}
+
+/* Estilo de color seleccionado */
+.color-selected {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #555;
+    margin-top: 10px; /* Espacio entre los elementos */
+}
+
+/* Círculo de color */
+.color-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 5px; /* Espacio al lado del texto */
+    border: 1px solid #000; /* Añade borde al círculo */
+}
+
+/* Tallas y largos */
+.size, .length {
+    font-size: 12px;
+    color: #555;
+    margin-top: 5px; /* Espacio entre los elementos */
+}
+
+
+
+
+ /* Estilo para la barra inferior */
+ .bottom-bar {
+    position: end;
+    bottom: 0;
+    left: 0;
+    width: 90%;
+    background-color: #0a3d62; /* Azul oscuro */
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 18px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.bottom-bar span {
+    font-weight: bold;
+}
+
+.checkout-button {
+    background-color: #1e4c79; /* Azul vibrante */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.checkout-button:hover {
+    background-color: #3742fa; /* Azul más oscuro */
+}
+
+.product-container {
+    margin-bottom: 70px; /* Espacio para la barra inferior */
+}
+
+       

@@ -1,0 +1,250 @@
+/* Estilo global */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;
+    color: black;
+}
+
+/* Barra superior con logo y botones */
+.top-bar {
+    background-color: #161616;
+    padding: 0px 25px; /* Barra delgada */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 1; /* Aclarado */
+}
+
+
+ 
+
+.logo {
+    height: 100px; /* Logo tamaño */
+}
+
+.auth-buttons .rounded-button {
+    background: rgb(241, 240, 251);
+    border: 1px solid black;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.auth-buttons .rounded-button:hover {
+    background: black;
+    color: white;
+}
+
+/* Categorías y búsqueda */
+.navbar {
+    background-color: black;
+    padding: 15px;
+    display: flex;
+    justify-content: center; /* Centrar categorías */
+    align-items: center;
+}
+
+.categories {
+    display: flex;
+    justify-content: center; /* Centra las categorías */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px; /* Espacio entre categorías */
+}
+
+
+
+.categories a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.categories a:hover {
+    text-decoration: underline;
+}
+
+.navbar-icons {
+    display: flex;
+    position: absolute;
+    right: 25px; /* Ajustar posición a la derecha */
+    gap: 25px; /* Espaciado entre los iconos */
+}
+
+.navbar-icons img {
+    width: 50px; /* Ancho */
+    height: 30px;
+}
+
+.search-bar {
+    padding: 5px;
+    border-radius: 20px;
+    border: 1px solid black;
+    font-size: 14px;
+    margin-left: 10px;
+    width: 100%;
+    max-width: 250px;
+}
+
+/* Estilo del menú */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 120%; /* Ajusta la distancia para que quede más abajo */
+    left: 50%; /* Centra el menú */
+    transform: translateX(-50%); /* Centra el menú */
+    background-color: black;
+    width: 1000px; /* Ancho de la barra del menú */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1; /* Se pone en la capa de arriba */
+    flex-direction: row; /* Columnas horizontales */
+    gap: 20px; /* Espacio entre las columnas */
+}
+
+/* Aseguramos que todos los menús aparezcan en la misma posición */
+.categories li {
+    margin: 0 15px;
+    position: relative; /* Necesario para posicionar el menú relativo a cada categoría */
+}
+
+/* Mostrar el menú al pasar el mouse */
+.categories li:hover .dropdown-menu {
+    display: flex; /* Muestra el menú al pasar el mouse */
+}
+
+/* Ajustar las columnas del menú */
+.dropdown-menu .column {
+    flex: 1;
+    padding: 10px;
+}
+
+/* Títulos de las columnas */
+.dropdown-menu .column h3 {
+    color: white;
+    margin-bottom: 10px;
+    font-size: 15px;
+    border-bottom: 1px solid #575757;
+    width: 100%; /* Asegura que todas las líneas tengan el mismo tamaño */
+    box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+}
+
+/* Enlaces dentro del menú */
+.dropdown-menu a {
+    color: white;
+    padding: 12px 20px;
+    display: block;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+/* Efecto hover en los enlaces del menú */
+.dropdown-menu a:hover {
+    background-color: #575757;
+}
+
+/* Sección principal (Hero) */
+.hero-section {
+    text-align: center;
+    padding: 20px;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.hero-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.main-image {
+    width: 100%;
+    height: auto;
+    border-radius: none;
+    outline: none; /* Elimina el contorno */
+    box-shadow: none;
+    border-bottom: 2px solid rgb(61, 69, 172);
+}
+
+/* Galería de imágenes */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 30px;
+    background-color: #ffffff;
+}
+
+.image-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: black;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

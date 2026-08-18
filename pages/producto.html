@@ -1,0 +1,2587 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Chamarra Trucker | Levi's</title>
+
+    <!-- =====================================================
+         CSS GENERAL
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../assets/css/styles1.css"
+    >
+
+
+    <!-- =====================================================
+         FUENTE
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         ESTILOS DE LA PÁGINA DEL PRODUCTO
+    ====================================================== -->
+
+    <style>
+
+        /* =====================================================
+           GENERAL
+        ====================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            color: #171717;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+
+
+        /* =====================================================
+           CONTENEDOR PRINCIPAL
+        ====================================================== */
+
+        .product-page {
+            width: 100%;
+            max-width: 1450px;
+            margin: 0 auto;
+            padding: 35px 45px 80px;
+        }
+
+
+        /* =====================================================
+           MIGAS DE PAN
+        ====================================================== */
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            color: #777;
+            font-size: 11px;
+        }
+
+
+        .breadcrumb a {
+            color: #555;
+            text-decoration: none;
+        }
+
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+
+        .breadcrumb span {
+            color: #aaa;
+        }
+
+
+        /* =====================================================
+           PRODUCTO
+        ====================================================== */
+
+        .product-detail {
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(380px, .75fr);
+            gap: 60px;
+            align-items: start;
+        }
+
+
+        /* =====================================================
+           GALERÍA
+        ====================================================== */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: 95px minmax(0, 1fr);
+            gap: 15px;
+            position: sticky;
+            top: 20px;
+        }
+
+
+        /* =====================================================
+           MINIATURAS
+        ====================================================== */
+
+        .thumbnail-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+
+        .thumbnail {
+            width: 95px;
+            height: 115px;
+            border: 1px solid #dedede;
+            background: #f4f4f4;
+            padding: 0;
+            cursor: pointer;
+            overflow: hidden;
+            transition: border-color .2s ease;
+        }
+
+
+        .thumbnail:hover {
+            border-color: #777;
+        }
+
+
+        .thumbnail.active {
+            border: 2px solid #111;
+        }
+
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+
+        /* =====================================================
+           IMAGEN PRINCIPAL
+        ====================================================== */
+
+        .main-image-container {
+            width: 100%;
+            background: #f4f4f4;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .main-image {
+            width: 100%;
+            min-height: 680px;
+            max-height: 760px;
+            object-fit: cover;
+            display: block;
+        }
+
+
+        /* =====================================================
+           FAVORITO SOBRE IMAGEN
+        ====================================================== */
+
+        .image-favorite {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 50%;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,.12);
+            transition: transform .2s ease;
+        }
+
+
+        .image-favorite:hover {
+            transform: scale(1.06);
+        }
+
+
+        .image-favorite img {
+            width: 21px;
+            height: 21px;
+            object-fit: contain;
+        }
+
+
+        /* =====================================================
+           INFORMACIÓN
+        ====================================================== */
+
+        .product-info {
+            padding: 5px 0;
+        }
+
+
+        .product-brand {
+            display: block;
+            margin-bottom: 9px;
+            color: #777;
+            font-size: 11px;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+        }
+
+
+        .product-title {
+            margin: 0;
+            font-size: 28px;
+            line-height: 1.25;
+            font-weight: 600;
+            letter-spacing: -.5px;
+        }
+
+
+        /* =====================================================
+           SKU
+        ====================================================== */
+
+        .product-sku {
+            margin-top: 10px;
+            color: #888;
+            font-size: 10px;
+        }
+
+
+        /* =====================================================
+           RATING
+        ====================================================== */
+
+        .rating-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+
+        .stars {
+            display: flex;
+            gap: 2px;
+            color: #111;
+            font-size: 14px;
+        }
+
+
+        .rating-link {
+            color: #555;
+            font-size: 11px;
+            text-decoration: underline;
+        }
+
+
+        /* =====================================================
+           PRECIO
+        ====================================================== */
+
+        .product-price {
+            margin-top: 24px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+
+        .price-note {
+            margin-top: 5px;
+            color: #777;
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           DIVISOR
+        ====================================================== */
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            border: none;
+            background: #e5e5e5;
+            margin: 25px 0;
+        }
+
+
+        /* =====================================================
+           DESCRIPCIÓN
+        ====================================================== */
+
+        .description {
+            color: #444;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+
+        .description p {
+            margin: 0 0 15px;
+        }
+
+
+        .features {
+            margin: 0;
+            padding-left: 18px;
+        }
+
+
+        .features li {
+            margin-bottom: 5px;
+        }
+
+
+        /* =====================================================
+           OPCIONES
+        ====================================================== */
+
+        .option-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 13px;
+        }
+
+
+        .option-title {
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+
+        .selected-value {
+            color: #666;
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           COLORES
+        ====================================================== */
+
+        .color-options {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+
+        .color-option {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            padding: 3px;
+            background: #fff;
+            cursor: pointer;
+        }
+
+
+        .color-option.active {
+            border-color: #111;
+        }
+
+
+        .color-circle {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px solid #bbb;
+        }
+
+
+        /* =====================================================
+           TALLAS
+        ====================================================== */
+
+        .size-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+
+        .size-button {
+            height: 44px;
+            border: 1px solid #cfcfcf;
+            background: #fff;
+            color: #222;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 12px;
+            transition: all .2s ease;
+        }
+
+
+        .size-button:hover {
+            border-color: #111;
+        }
+
+
+        .size-button.active {
+            background: #111;
+            color: #fff;
+            border-color: #111;
+        }
+
+
+        /* =====================================================
+           GUÍA DE TALLAS
+        ====================================================== */
+
+        .size-guide {
+            display: block;
+            margin-top: 11px;
+            color: #333;
+            font-size: 11px;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           CANTIDAD + CARRITO
+        ====================================================== */
+
+        .purchase-row {
+            display: grid;
+            grid-template-columns: 115px 1fr 52px;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+
+        .quantity {
+            height: 54px;
+            border: 1px solid #cfcfcf;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .quantity button {
+            width: 35px;
+            height: 52px;
+            border: none;
+            background: transparent;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+
+        .quantity span {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+
+        .add-cart {
+            height: 54px;
+            border: none;
+            background: #111;
+            color: #fff;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            cursor: pointer;
+            transition: background .2s ease;
+        }
+
+
+        .add-cart:hover {
+            background: #333;
+        }
+
+
+        .favorite-button {
+            height: 54px;
+            border: 1px solid #cfcfcf;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+
+        .favorite-button img {
+            width: 21px;
+            height: 21px;
+        }
+
+
+        /* =====================================================
+           INFORMACIÓN DE ENVÍO
+        ====================================================== */
+
+        .benefits {
+            margin-top: 25px;
+            border: 1px solid #e3e3e3;
+        }
+
+
+        .benefit {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 17px;
+            border-bottom: 1px solid #e3e3e3;
+        }
+
+
+        .benefit:last-child {
+            border-bottom: none;
+        }
+
+
+        .benefit-icon {
+            width: 30px;
+            font-size: 17px;
+            text-align: center;
+        }
+
+
+        .benefit-text strong {
+            display: block;
+            margin-bottom: 3px;
+            font-size: 11px;
+        }
+
+
+        .benefit-text span {
+            color: #777;
+            font-size: 10px;
+        }
+
+
+        /* =====================================================
+           ACORDEONES
+        ====================================================== */
+
+        .accordion {
+            border-top: 1px solid #ddd;
+            margin-top: 28px;
+        }
+
+
+        .accordion-item {
+            border-bottom: 1px solid #ddd;
+        }
+
+
+        .accordion-button {
+            width: 100%;
+            min-height: 57px;
+            border: none;
+            background: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: left;
+        }
+
+
+        .accordion-symbol {
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+
+        .accordion-content {
+            display: none;
+            padding: 0 0 20px;
+            color: #666;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+
+        .accordion-content.open {
+            display: block;
+        }
+
+
+        /* =====================================================
+           TOAST
+        ====================================================== */
+
+        .toast {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            background: #111;
+            color: #fff;
+            padding: 16px 22px;
+            font-size: 12px;
+            opacity: 0;
+            transform: translateY(15px);
+            pointer-events: none;
+            transition: all .3s ease;
+            z-index: 9999;
+        }
+
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        footer {
+            margin-top: 0;
+            padding: 35px;
+            background: #111;
+            color: #fff;
+            text-align: center;
+        }
+
+
+        footer p {
+            margin: 0;
+            color: #ddd;
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           TABLET
+        ====================================================== */
+
+        @media (max-width: 1000px) {
+
+            .product-page {
+                padding: 30px 25px 60px;
+            }
+
+
+            .product-detail {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+
+            .gallery {
+                position: static;
+            }
+
+
+            .main-image {
+                min-height: 600px;
+            }
+
+        }
+
+
+        /* =====================================================
+           MÓVIL
+        ====================================================== */
+
+        @media (max-width: 650px) {
+
+            .product-page {
+                padding: 20px 15px 50px;
+            }
+
+
+            .product-detail {
+                gap: 30px;
+            }
+
+
+            .gallery {
+                grid-template-columns: 65px minmax(0, 1fr);
+                gap: 8px;
+            }
+
+
+            .thumbnail {
+                width: 65px;
+                height: 82px;
+            }
+
+
+            .main-image {
+                min-height: 420px;
+            }
+
+
+            .product-title {
+                font-size: 23px;
+            }
+
+
+            .size-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+
+            .purchase-row {
+                grid-template-columns: 100px 1fr 50px;
+            }
+
+        }
+
+
+        /* =====================================================
+           MÓVIL PEQUEÑO
+        ====================================================== */
+
+        @media (max-width: 430px) {
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+
+            .thumbnail-list {
+                order: 2;
+                flex-direction: row;
+                overflow-x: auto;
+            }
+
+
+            .thumbnail {
+                flex-shrink: 0;
+            }
+
+
+            .main-image {
+                min-height: 390px;
+            }
+
+
+            .purchase-row {
+                grid-template-columns: 1fr;
+            }
+
+
+            .quantity {
+                width: 100%;
+            }
+
+
+            .favorite-button {
+                display: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header>
+
+
+        <!-- =================================================
+             BARRA SUPERIOR
+        ================================================== -->
+
+        <div class="top-bar">
+
+            <a href="../paginaweb.html">
+
+                <img
+                    src="../assets/img/levlogo.png"
+                    alt="Logo Levi's"
+                    class="logo"
+                >
+
+            </a>
+
+
+            <div class="auth-buttons">
+
+                <button
+                    class="rounded-button"
+                    type="button"
+                    onclick="location.href='inicio.html';"
+                >
+                    INICIAR SESIÓN
+                </button>
+
+
+                <button
+                    class="rounded-button"
+                    type="button"
+                    onclick="location.href='registrarse.html';"
+                >
+                    REGISTRARSE
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             NAVBAR
+        ================================================== -->
+
+        <nav class="navbar">
+
+
+            <ul class="categories">
+
+
+                <!-- NEW ARRIVALS -->
+
+                <li class="dropdown">
+
+                    <a href="#">
+                        NEW ARRIVALS
+                    </a>
+
+
+                    <div class="dropdown-menu">
+
+
+                        <div class="column">
+
+                            <h3>DESTACADO</h3>
+
+                            <a href="Reinterpretado%20por%20Beyonce.html">
+                                REINTERPRETADO POR BEYONCE
+                            </a>
+
+                            <a href="lomasvendido.html">
+                                LO MÁS VENDIDO
+                            </a>
+
+                            <a href="otoño.html">
+                                COLECCIÓN OTOÑO-INVIERNO
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>NOVEDADES PARA HOMBRE</h3>
+
+                            <a href="hombre.html">
+                                ROPA
+                            </a>
+
+                            <a href="hombre.html">
+                                ACCESORIOS
+                            </a>
+
+                            <a href="hombre.html">
+                                SUDADERAS Y CHAMARRAS
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>NOVEDADES PARA MUJER</h3>
+
+                            <a href="mujer.html">
+                                ROPA
+                            </a>
+
+                            <a href="mujer.html">
+                                ACCESORIOS
+                            </a>
+
+                            <a href="mujer.html">
+                                SUDADERAS Y CHAMARRAS
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>NOVEDADES PARA KIDS</h3>
+
+                            <a href="kids.html">
+                                ROPA PARA NIÑOS
+                            </a>
+
+                            <a href="kids.html">
+                                SUDADERAS Y CHAMARRAS PARA NIÑOS
+                            </a>
+
+                            <a href="kids.html">
+                                ROPA PARA NIÑAS
+                            </a>
+
+                            <a href="kids.html">
+                                SUDADERAS Y CHAMARRAS PARA NIÑAS
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>ACCESORIOS</h3>
+
+                            <a href="accesorios.html">
+                                CINTURONES
+                            </a>
+
+                            <a href="accesorios.html">
+                                CARTERAS
+                            </a>
+
+                            <a href="accesorios.html">
+                                UNDERWEAR & SOCKS
+                            </a>
+
+                            <a href="accesorios.html">
+                                HEADWEAR
+                            </a>
+
+                            <a href="accesorios.html">
+                                GORRAS & GORROS
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+                </li>
+
+
+
+                <!-- HOMBRE -->
+
+                <li class="dropdown">
+
+                    <a href="#">
+                        HOMBRE
+                    </a>
+
+
+                    <div class="dropdown-menu">
+
+
+                        <div class="column">
+
+                            <h3>DESTACADO</h3>
+
+                            <a href="lomasvendido.html">
+                                LO MÁS NUEVO
+                            </a>
+
+                            <a href="lomasvendido.html">
+                                LO MÁS VENDIDO
+                            </a>
+
+                            <a href="otoño.html">
+                                COLECCIÓN OTOÑO-INVIERNO
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>ROPA</h3>
+
+                            <a href="hombre.html">
+                                VER TODO
+                            </a>
+
+                            <a href="hombre.html">
+                                JEANS
+                            </a>
+
+                            <a href="hombre.html">
+                                PANTALONES & SHORTS
+                            </a>
+
+                            <a href="hombre.html">
+                                CAMISAS Y PLAYERAS
+                            </a>
+
+                            <a href="hombre.html">
+                                POLOS
+                            </a>
+
+                            <a href="hombre.html">
+                                BIG & TALL
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>
+                                SUDADERAS Y CHAMARRAS
+                            </h3>
+
+                            <a href="hombre.html">
+                                OUTERWEAR
+                            </a>
+
+                            <a href="hombre.html">
+                                SWEATERS
+                            </a>
+
+                            <a href="hombre.html">
+                                SUDADERAS
+                            </a>
+
+                            <a href="hombre.html">
+                                CHAMARRAS
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>
+                                ACCESORIOS
+                            </h3>
+
+                            <a href="accesorios.html">
+                                CINTURONES
+                            </a>
+
+                            <a href="accesorios.html">
+                                CARTERAS
+                            </a>
+
+                            <a href="accesorios.html">
+                                UNDERWEAR & SOCKS
+                            </a>
+
+                            <a href="accesorios.html">
+                                HEADWEAR
+                            </a>
+
+                            <a href="accesorios.html">
+                                GORRAS & GORROS
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+                </li>
+
+
+
+                <!-- MUJER -->
+
+                <li class="dropdown">
+
+                    <a href="#">
+                        MUJER
+                    </a>
+
+
+                    <div class="dropdown-menu">
+
+
+                        <div class="column">
+
+                            <h3>DESTACADO</h3>
+
+                            <a href="lomasvendido.html">
+                                LO MÁS NUEVO
+                            </a>
+
+                            <a href="lomasvendido.html">
+                                LO MÁS VENDIDO
+                            </a>
+
+                            <a href="otoño.html">
+                                COLECCIÓN OTOÑO-INVIERNO
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>ROPA</h3>
+
+                            <a href="mujer.html">
+                                VER TODO
+                            </a>
+
+                            <a href="mujer.html">
+                                JEANS
+                            </a>
+
+                            <a href="mujer.html">
+                                PANTALONES
+                            </a>
+
+                            <a href="mujer.html">
+                                SHORTS & FALDAS
+                            </a>
+
+                            <a href="mujer.html">
+                                VESTIDOS & ONE PIECE
+                            </a>
+
+                            <a href="mujer.html">
+                                BIG & TALL
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>
+                                SUDADERAS Y CHAMARRAS
+                            </h3>
+
+                            <a href="mujer.html">
+                                OUTERWEAR
+                            </a>
+
+                            <a href="mujer.html">
+                                SWEATERS
+                            </a>
+
+                            <a href="mujer.html">
+                                SUDADERAS
+                            </a>
+
+                            <a href="mujer.html">
+                                CHAMARRAS
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>
+                                ACCESORIOS
+                            </h3>
+
+                            <a href="accesorios.html">
+                                CINTURONES
+                            </a>
+
+                            <a href="accesorios.html">
+                                CARTERAS
+                            </a>
+
+                            <a href="accesorios.html">
+                                UNDERWEAR & SOCKS
+                            </a>
+
+                            <a href="accesorios.html">
+                                HEADWEAR
+                            </a>
+
+                            <a href="accesorios.html">
+                                GORRAS & GORROS
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+                </li>
+
+
+
+                <!-- KIDS -->
+
+                <li class="dropdown">
+
+                    <a href="#">
+                        KIDS
+                    </a>
+
+
+                    <div class="dropdown-menu">
+
+
+                        <div class="column">
+
+                            <h3>DESTACADO</h3>
+
+                            <a href="kids.html">
+                                LO MÁS NUEVO
+                            </a>
+
+                            <a href="kids.html">
+                                LO MÁS VENDIDO
+                            </a>
+
+                            <a href="kids.html">
+                                COLECCIÓN OTOÑO-INVIERNO
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>ROPA</h3>
+
+                            <a href="kids.html">
+                                VER TODO
+                            </a>
+
+                            <a href="kids.html">
+                                BEBÉS E INFANTIL
+                            </a>
+
+                            <a href="kids.html">
+                                PREESCOLAR
+                            </a>
+
+                            <a href="kids.html">
+                                NIÑOS/AS
+                            </a>
+
+                            <a href="kids.html">
+                                PLAYERAS
+                            </a>
+
+                            <a href="kids.html">
+                                BIG & TALL
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>
+                                SUDADERAS Y CHAMARRAS
+                            </h3>
+
+                            <a href="kids.html">
+                                OUTERWEAR
+                            </a>
+
+                            <a href="kids.html">
+                                SWEATERS
+                            </a>
+
+                            <a href="kids.html">
+                                SUDADERAS
+                            </a>
+
+                            <a href="kids.html">
+                                CHAMARRAS
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>
+                                ACCESORIOS
+                            </h3>
+
+                            <a href="accesorios.html">
+                                CINTURONES
+                            </a>
+
+                            <a href="accesorios.html">
+                                UNDERWEAR & SOCKS
+                            </a>
+
+                            <a href="accesorios.html">
+                                HEADWEAR
+                            </a>
+
+                            <a href="accesorios.html">
+                                GORRAS & GORROS
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+                </li>
+
+
+
+                <!-- REBAJAS -->
+
+                <li class="dropdown">
+
+                    <a href="#">
+                        REBAJAS
+                    </a>
+
+
+                    <div class="dropdown-menu">
+
+
+                        <div class="column">
+
+                            <h3>
+                                TODAS LAS OFERTAS
+                            </h3>
+
+                            <a href="rebajas.html">
+                                OFERTAS DE ROPA
+                            </a>
+
+                            <a href="rebajas.html">
+                                OFERTAS DE ACCESORIOS
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>
+                                HOMBRE
+                            </h3>
+
+                            <a href="rebajas.html">
+                                VER TODO
+                            </a>
+
+                            <a href="rebajas.html">
+                                PLAYERAS
+                            </a>
+
+                            <a href="rebajas.html">
+                                SUDADERAS
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>
+                                OFERTAS POR TIEMPO LIMITADO
+                            </h3>
+
+                            <a href="rebajas.html">
+                                ÚLTIMA OPORTUNIDAD HASTA 40% OFF
+                            </a>
+
+                            <a href="rebajas.html">
+                                OFERTAS DE NUEVOS ESTILOS
+                            </a>
+
+                        </div>
+
+
+                        <div class="column">
+
+                            <h3>
+                                ACCESORIOS
+                            </h3>
+
+                            <a href="rebajas.html">
+                                CINTURONES
+                            </a>
+
+                            <a href="rebajas.html">
+                                GORRAS & GORROS
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+                </li>
+
+
+            </ul>
+
+
+            <!-- =================================================
+                 ICONOS
+            ================================================== -->
+
+            <div class="navbar-icons">
+
+
+                <input
+                    type="text"
+                    placeholder="Buscar..."
+                    class="search-bar"
+                >
+
+
+                <img
+                    src="../assets/img/cora.png"
+                    alt="Favoritos"
+                    onclick="location.href='Favoritos.html';"
+                    style="cursor:pointer;"
+                >
+
+
+                <img
+                    src="../assets/img/bolsa.png"
+                    alt="Carrito"
+                    onclick="location.href='Carrito.html';"
+                    style="cursor:pointer;"
+                >
+
+
+            </div>
+
+
+        </nav>
+
+
+    </header>
+
+
+
+    <!-- =====================================================
+         PRODUCTO
+    ====================================================== -->
+
+    <main class="product-page">
+
+
+        <!-- MIGAS -->
+
+        <div class="breadcrumb">
+
+            <a href="../paginaweb.html">
+                INICIO
+            </a>
+
+            <span>›</span>
+
+            <a href="hombre.html">
+                HOMBRE
+            </a>
+
+            <span>›</span>
+
+            <span>
+                CHAMARRAS
+            </span>
+
+        </div>
+
+
+
+        <div class="product-detail">
+
+
+            <!-- =================================================
+                 GALERÍA
+            ================================================== -->
+
+            <section class="gallery">
+
+
+                <!-- MINIATURAS -->
+
+                <div class="thumbnail-list">
+
+
+                    <button
+                        class="thumbnail active"
+                        type="button"
+                        onclick="changeImage(this, '../assets/img/pro4.png')"
+                    >
+
+                        <img
+                            src="../assets/img/pro4.png"
+                            alt="Vista frontal"
+                        >
+
+                    </button>
+
+
+                    <button
+                        class="thumbnail"
+                        type="button"
+                        onclick="changeImage(this, '../assets/img/pro6.png')"
+                    >
+
+                        <img
+                            src="../assets/img/pro6.png"
+                            alt="Vista posterior"
+                        >
+
+                    </button>
+
+
+                    <button
+                        class="thumbnail"
+                        type="button"
+                        onclick="changeImage(this, '../assets/img/pro5.png')"
+                    >
+
+                        <img
+                            src="../assets/img/pro5.png"
+                            alt="Detalle del producto"
+                        >
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- IMAGEN PRINCIPAL -->
+
+                <div class="main-image-container">
+
+
+                    <img
+                        src="../assets/img/pro4.png"
+                        alt="Chamarra Trucker de Mezclilla Original Levi's"
+                        class="main-image"
+                        id="mainProductImage"
+                    >
+
+
+                    <button
+                        class="image-favorite"
+                        type="button"
+                        onclick="toggleFavorite(this)"
+                    >
+
+                        <img
+                            src="../assets/img/cora.png"
+                            alt="Agregar a favoritos"
+                        >
+
+                    </button>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 INFORMACIÓN DEL PRODUCTO
+            ================================================== -->
+
+            <section class="product-info">
+
+
+                <span class="product-brand">
+                    LEVI'S®
+                </span>
+
+
+                <h1 class="product-title">
+                    Chamarra Trucker de Mezclilla Original Levi’s®
+                </h1>
+
+
+                <div class="product-sku">
+                    SKU: 72334-0134
+                </div>
+
+
+
+                <!-- RATING -->
+
+                <div class="rating-row">
+
+                    <div class="stars">
+
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+
+                    </div>
+
+                    <a
+                        href="#reviews"
+                        class="rating-link"
+                    >
+                        24 reseñas
+                    </a>
+
+                </div>
+
+
+
+                <!-- PRECIO -->
+
+                <div class="product-price">
+                    $1,399.00
+                </div>
+
+
+                <div class="price-note">
+                    Precio final con impuestos incluidos.
+                </div>
+
+
+
+                <hr class="divider">
+
+
+
+                <!-- DESCRIPCIÓN -->
+
+                <div class="description">
+
+                    <p>
+                        Una chamarra que ya es un clásico por su enorme
+                        personalidad. Su diseño icónico y corte regular
+                        hacen de esta prenda una pieza fácil de combinar.
+                    </p>
+
+
+                    <ul class="features">
+
+                        <li>
+                            Un corte favorecedor en una prenda emblemática
+                        </li>
+
+                        <li>
+                            Corte regular
+                        </li>
+
+                        <li>
+                            Cuello camisero
+                        </li>
+
+                        <li>
+                            Manga larga
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <hr class="divider">
+
+
+
+                <!-- =================================================
+                     COLOR
+                ================================================== -->
+
+                <div class="option-header">
+
+                    <span class="option-title">
+                        COLOR
+                    </span>
+
+                    <span
+                        class="selected-value"
+                        id="selectedColor"
+                    >
+                        Azul
+                    </span>
+
+                </div>
+
+
+                <div class="color-options">
+
+
+                    <button
+                        class="color-option active"
+                        type="button"
+                        onclick="selectColor(this, 'Azul')"
+                    >
+
+                        <span
+                            class="color-circle"
+                            style="background:#315b86;"
+                        ></span>
+
+                    </button>
+
+
+                    <button
+                        class="color-option"
+                        type="button"
+                        onclick="selectColor(this, 'Negro')"
+                    >
+
+                        <span
+                            class="color-circle"
+                            style="background:#111;"
+                        ></span>
+
+                    </button>
+
+
+                    <button
+                        class="color-option"
+                        type="button"
+                        onclick="selectColor(this, 'Rosa')"
+                    >
+
+                        <span
+                            class="color-circle"
+                            style="background:#d9a5b3;"
+                        ></span>
+
+                    </button>
+
+
+                    <button
+                        class="color-option"
+                        type="button"
+                        onclick="selectColor(this, 'Blanco')"
+                    >
+
+                        <span
+                            class="color-circle"
+                            style="background:#fff;"
+                        ></span>
+
+                    </button>
+
+
+                </div>
+
+
+
+                <hr class="divider">
+
+
+
+                <!-- =================================================
+                     TALLA
+                ================================================== -->
+
+                <div class="option-header">
+
+                    <span class="option-title">
+                        TALLA
+                    </span>
+
+                    <span
+                        class="selected-value"
+                        id="selectedSize"
+                    >
+                        Selecciona una talla
+                    </span>
+
+                </div>
+
+
+                <div class="size-grid">
+
+
+                    <button
+                        class="size-button"
+                        type="button"
+                        onclick="selectSize(this, '25')"
+                    >
+                        25
+                    </button>
+
+
+                    <button
+                        class="size-button"
+                        type="button"
+                        onclick="selectSize(this, '26')"
+                    >
+                        26
+                    </button>
+
+
+                    <button
+                        class="size-button"
+                        type="button"
+                        onclick="selectSize(this, '27')"
+                    >
+                        27
+                    </button>
+
+
+                    <button
+                        class="size-button"
+                        type="button"
+                        onclick="selectSize(this, '28')"
+                    >
+                        28
+                    </button>
+
+
+                    <button
+                        class="size-button"
+                        type="button"
+                        onclick="selectSize(this, '29')"
+                    >
+                        29
+                    </button>
+
+
+                    <button
+                        class="size-button"
+                        type="button"
+                        onclick="selectSize(this, '30')"
+                    >
+                        30
+                    </button>
+
+
+                    <button
+                        class="size-button"
+                        type="button"
+                        onclick="selectSize(this, '31')"
+                    >
+                        31
+                    </button>
+
+
+                </div>
+
+
+                <a
+                    href="#"
+                    class="size-guide"
+                    onclick="showSizeGuide(event)"
+                >
+                    GUÍA DE TALLAS
+                </a>
+
+
+
+                <hr class="divider">
+
+
+
+                <!-- =================================================
+                     LARGO
+                ================================================== -->
+
+                <div class="option-header">
+
+                    <span class="option-title">
+                        LARGO
+                    </span>
+
+                    <span
+                        class="selected-value"
+                        id="selectedLength"
+                    >
+                        Selecciona un largo
+                    </span>
+
+                </div>
+
+
+                <div class="size-grid">
+
+
+                    <button
+                        class="size-button"
+                        type="button"
+                        onclick="selectLength(this, '28')"
+                    >
+                        28
+                    </button>
+
+
+                    <button
+                        class="size-button"
+                        type="button"
+                        onclick="selectLength(this, '30')"
+                    >
+                        30
+                    </button>
+
+
+                    <button
+                        class="size-button"
+                        type="button"
+                        onclick="selectLength(this, '32')"
+                    >
+                        32
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     COMPRA
+                ================================================== -->
+
+                <div class="purchase-row">
+
+
+                    <div class="quantity">
+
+                        <button
+                            type="button"
+                            onclick="changeQuantity(-1)"
+                        >
+                            −
+                        </button>
+
+
+                        <span id="quantity">
+                            1
+                        </span>
+
+
+                        <button
+                            type="button"
+                            onclick="changeQuantity(1)"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+
+                    <button
+                        class="add-cart"
+                        type="button"
+                        onclick="addToCart()"
+                    >
+                        AÑADIR AL CARRITO
+                    </button>
+
+
+                    <button
+                        class="favorite-button"
+                        type="button"
+                        onclick="toggleFavorite(this)"
+                    >
+
+                        <img
+                            src="../assets/img/cora.png"
+                            alt="Favoritos"
+                        >
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     BENEFICIOS
+                ================================================== -->
+
+                <div class="benefits">
+
+
+                    <div class="benefit">
+
+                        <div class="benefit-icon">
+                            🚚
+                        </div>
+
+                        <div class="benefit-text">
+
+                            <strong>
+                                ENVÍO GRATIS
+                            </strong>
+
+                            <span>
+                                En compras participantes.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="benefit">
+
+                        <div class="benefit-icon">
+                            ↩
+                        </div>
+
+                        <div class="benefit-text">
+
+                            <strong>
+                                DEVOLUCIONES FÁCILES
+                            </strong>
+
+                            <span>
+                                Consulta nuestras condiciones de devolución.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="benefit">
+
+                        <div class="benefit-icon">
+                            🔒
+                        </div>
+
+                        <div class="benefit-text">
+
+                            <strong>
+                                COMPRA SEGURA
+                            </strong>
+
+                            <span>
+                                Tus datos están protegidos.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     INFORMACIÓN ADICIONAL
+                ================================================== -->
+
+                <div class="accordion">
+
+
+                    <!-- DESCRIPCIÓN -->
+
+                    <div class="accordion-item">
+
+                        <button
+                            class="accordion-button"
+                            type="button"
+                            onclick="toggleAccordion(this)"
+                        >
+
+                            <span>
+                                DESCRIPCIÓN
+                            </span>
+
+                            <span class="accordion-symbol">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="accordion-content">
+
+                            Chamarra Trucker de Mezclilla Original
+                            Levi’s®, diseñada para ofrecer un estilo
+                            clásico y versátil.
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- AJUSTE -->
+
+                    <div class="accordion-item">
+
+                        <button
+                            class="accordion-button"
+                            type="button"
+                            onclick="toggleAccordion(this)"
+                        >
+
+                            <span>
+                                AJUSTE Y TALLA
+                            </span>
+
+                            <span class="accordion-symbol">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="accordion-content">
+
+                            Corte regular. Selecciona la talla que
+                            normalmente utilizas para obtener el ajuste
+                            esperado.
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- CUIDADOS -->
+
+                    <div class="accordion-item">
+
+                        <button
+                            class="accordion-button"
+                            type="button"
+                            onclick="toggleAccordion(this)"
+                        >
+
+                            <span>
+                                CUIDADO DE LA PRENDA
+                            </span>
+
+                            <span class="accordion-symbol">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="accordion-content">
+
+                            Sigue las instrucciones de cuidado indicadas
+                            en la etiqueta de la prenda para conservar
+                            mejor el tejido y el color.
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ENVÍO -->
+
+                    <div class="accordion-item">
+
+                        <button
+                            class="accordion-button"
+                            type="button"
+                            onclick="toggleAccordion(this)"
+                        >
+
+                            <span>
+                                ENVÍO Y DEVOLUCIONES
+                            </span>
+
+                            <span class="accordion-symbol">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="accordion-content">
+
+                            Consulta las condiciones de envío y devolución
+                            disponibles para tu compra.
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <p>
+            &copy; 2024 Levi's. Todos los derechos reservados.
+        </p>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         MENSAJE
+    ====================================================== -->
+
+    <div
+        class="toast"
+        id="toast"
+    ></div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           CAMBIAR IMAGEN
+        ====================================================== */
+
+        function changeImage(button, image) {
+
+            document
+                .getElementById('mainProductImage')
+                .src = image;
+
+
+            document
+                .querySelectorAll('.thumbnail')
+                .forEach(function (thumbnail) {
+
+                    thumbnail.classList.remove('active');
+
+                });
+
+
+            button.classList.add('active');
+
+        }
+
+
+
+        /* =====================================================
+           SELECCIONAR COLOR
+        ====================================================== */
+
+        function selectColor(button, color) {
+
+            document
+                .querySelectorAll('.color-option')
+                .forEach(function (option) {
+
+                    option.classList.remove('active');
+
+                });
+
+
+            button.classList.add('active');
+
+
+            document
+                .getElementById('selectedColor')
+                .textContent = color;
+
+        }
+
+
+
+        /* =====================================================
+           SELECCIONAR TALLA
+        ====================================================== */
+
+        function selectSize(button, size) {
+
+            document
+                .querySelectorAll('.size-button')
+                .forEach(function (option) {
+
+                    option.classList.remove('active');
+
+                });
+
+
+            button.classList.add('active');
+
+
+            document
+                .getElementById('selectedSize')
+                .textContent = 'Talla ' + size;
+
+        }
+
+
+
+        /* =====================================================
+           SELECCIONAR LARGO
+        ====================================================== */
+
+        function selectLength(button, length) {
+
+            /*
+             * Solo quitamos la selección de los botones
+             * correspondientes al largo.
+             */
+
+            const lengthButtons =
+                button.parentElement.querySelectorAll('.size-button');
+
+
+            lengthButtons.forEach(function (option) {
+
+                option.classList.remove('active');
+
+            });
+
+
+            button.classList.add('active');
+
+
+            document
+                .getElementById('selectedLength')
+                .textContent = 'Largo ' + length;
+
+        }
+
+
+
+        /* =====================================================
+           CANTIDAD
+        ====================================================== */
+
+        function changeQuantity(amount) {
+
+            const quantityElement =
+                document.getElementById('quantity');
+
+
+            let quantity =
+                parseInt(quantityElement.textContent);
+
+
+            quantity += amount;
+
+
+            if (quantity < 1) {
+
+                quantity = 1;
+
+            }
+
+
+            if (quantity > 10) {
+
+                quantity = 10;
+
+            }
+
+
+            quantityElement.textContent = quantity;
+
+        }
+
+
+
+        /* =====================================================
+           AÑADIR AL CARRITO
+        ====================================================== */
+
+        function addToCart() {
+
+            const size =
+                document.getElementById('selectedSize').textContent;
+
+
+            const length =
+                document.getElementById('selectedLength').textContent;
+
+
+            if (size === 'Selecciona una talla') {
+
+                showToast(
+                    'Selecciona una talla antes de continuar.'
+                );
+
+                return;
+
+            }
+
+
+            if (length === 'Selecciona un largo') {
+
+                showToast(
+                    'Selecciona un largo antes de continuar.'
+                );
+
+                return;
+
+            }
+
+
+            const quantity =
+                document.getElementById('quantity').textContent;
+
+
+            showToast(
+                'Producto añadido al carrito · ' +
+                quantity +
+                ' unidad(es)'
+            );
+
+        }
+
+
+
+        /* =====================================================
+           FAVORITOS
+        ====================================================== */
+
+        function toggleFavorite(button) {
+
+            button.classList.toggle('favorite-active');
+
+
+            if (
+                button.classList.contains('favorite-active')
+            ) {
+
+                showToast(
+                    'Producto agregado a favoritos ♥'
+                );
+
+            } else {
+
+                showToast(
+                    'Producto eliminado de favoritos'
+                );
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           ACORDEÓN
+        ====================================================== */
+
+        function toggleAccordion(button) {
+
+            const content =
+                button.nextElementSibling;
+
+
+            const symbol =
+                button.querySelector('.accordion-symbol');
+
+
+            const isOpen =
+                content.classList.contains('open');
+
+
+            content.classList.toggle(
+                'open'
+            );
+
+
+            symbol.textContent =
+                isOpen ? '+' : '−';
+
+        }
+
+
+
+        /* =====================================================
+           GUÍA DE TALLAS
+        ====================================================== */
+
+        function showSizeGuide(event) {
+
+            event.preventDefault();
+
+
+            showToast(
+                'Guía de tallas disponible próximamente.'
+            );
+
+        }
+
+
+
+        /* =====================================================
+           MENSAJE
+        ====================================================== */
+
+        function showToast(message) {
+
+            const toast =
+                document.getElementById('toast');
+
+
+            toast.textContent = message;
+
+
+            toast.classList.add('show');
+
+
+            setTimeout(function () {
+
+                toast.classList.remove('show');
+
+            }, 2800);
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

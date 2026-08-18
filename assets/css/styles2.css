@@ -1,0 +1,54 @@
+/* Cambiar el tamaño del recuadro blanco */
+.container {
+    width: 500px; /* Ancho más grande */
+    height: auto; /* Altura ajustable automáticamente */
+    padding: 30px; /* Más espacio interior */
+    margin: 100px auto; /* Centrado horizontal y vertical */
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    text-align: center;
+}
+
+/* Opcional: Ajustar el tamaño de la fuente del título y texto */
+.container h2 {
+    font-size: 1.8em; /* Título más grande */
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.container p {
+    font-size: 1.1em; /* Subtítulo más grande */
+    margin-bottom: 25px;
+}
+
+/* Opcional: Ampliar el campo de entrada */
+.container input[type="email"] {
+    width: 90%; /* Aumentar el ancho del campo */
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* Botón sin cambios */
+.container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #000;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.container button:hover {
+    background-color: #333;
+}
+
